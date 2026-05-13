@@ -1,91 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curia Advisory — Where Law Meets Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:   #1B4332;
+    --mid:      #2E6B4A;
+    --olive:    #5C5A35;
+    --olive-lt: #8A8760;
+    --charcoal: #2C2C2A;
+    --pale:     #F5F9F7;
+    --stone:    #888780;
+    --dark:     #1E1E1C;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Instrument Sans',sans-serif;font-weight:300;overflow-x:hidden;background:var(--pale);color:var(--charcoal);cursor:none;}
+  .cursor{position:fixed;width:8px;height:8px;background:var(--forest);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+  .cursor-ring{position:fixed;width:30px;height:30px;border:1px solid rgba(27,67,50,0.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.35s ease;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:22px 60px;background:rgba(245,249,247,0.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(27,67,50,0.1);}
+  .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;letter-spacing:0.05em;color:var(--charcoal);}
+  .nav-name span{color:var(--forest);font-style:italic;}
+  .nav-links{display:flex;gap:36px;list-style:none;}
+  .nav-links a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color 0.3s;}
+  .nav-links a:hover{color:var(--forest);}
+  .nav-cta{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:10px 24px;border:1px solid var(--forest);color:var(--forest);background:transparent;text-decoration:none;transition:all 0.3s;}
+  .nav-cta:hover{background:var(--forest);color:var(--pale);}
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:78px;position:relative;}
+  .hero-left{background:var(--pale);display:flex;flex-direction:column;justify-content:center;padding:80px 60px;position:relative;}
+  .hero-right{background:var(--charcoal);display:flex;flex-direction:column;justify-content:center;padding:80px 60px;position:relative;overflow:hidden;}
+  .hero-right::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(27,67,50,0.28),transparent 70%);pointer-events:none;}
+  .hero-divider{position:absolute;left:50%;top:0;bottom:0;width:4px;background:var(--forest);z-index:10;}
+  .hero-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--forest);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+  .hero-tag::before{content:'';display:block;width:28px;height:1px;background:var(--forest);}
+  .hero-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.2vw,60px);font-weight:300;line-height:1.1;color:var(--charcoal);margin-bottom:28px;}
+  .hero-headline em{font-style:italic;color:var(--forest);display:block;}
+  .hero-sub{font-size:15px;line-height:1.8;color:var(--stone);margin-bottom:44px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-dark{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 32px;background:var(--forest);color:var(--pale);text-decoration:none;border:1px solid var(--forest);transition:all 0.3s;}
+  .btn-dark:hover{background:transparent;color:var(--forest);}
+  .btn-outline{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 32px;background:transparent;color:var(--stone);border:1px solid rgba(136,135,128,0.3);text-decoration:none;transition:all 0.3s;}
+  .btn-outline:hover{border-color:var(--stone);color:var(--charcoal);}
+  .hero-right-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--olive-lt);margin-bottom:24px;}
+  .hero-right-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,2.8vw,40px);font-weight:300;line-height:1.2;color:var(--pale);margin-bottom:32px;}
+  .hero-right-heading em{font-style:italic;color:var(--olive-lt);}
+  .hero-pillars{list-style:none;}
+  .hero-pillar{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(245,249,247,0.07);}
+  .hero-pillar:first-child{border-top:1px solid rgba(245,249,247,0.07);}
+  .pillar-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--olive-lt);flex-shrink:0;margin-top:3px;}
+  .pillar-text{font-size:14px;color:rgba(245,249,247,0.72);line-height:1.6;}
+  .pillar-text strong{color:var(--pale);font-weight:500;display:block;margin-bottom:2px;}
+  .marquee-wrap{border-top:1px solid rgba(27,67,50,0.14);border-bottom:1px solid rgba(27,67,50,0.14);padding:15px 0;overflow:hidden;background:var(--pale);}
+  .marquee-track{display:flex;animation:marquee 26s linear infinite;width:max-content;}
+  .marquee-item{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);white-space:nowrap;padding:0 28px;display:flex;align-items:center;gap:28px;}
+  .marquee-item::after{content:'◆';color:var(--forest);font-size:7px;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--forest);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+  .section-label::before{content:'';display:block;width:24px;height:1px;background:var(--forest);}
+  .about{padding:120px 60px;background:var(--pale);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .about-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.15;color:var(--charcoal);margin-bottom:26px;}
+  .about-heading em{font-style:italic;color:var(--forest);}
+  .about-body{font-size:15px;line-height:1.85;color:var(--stone);margin-bottom:18px;}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:38px;background:rgba(27,67,50,0.1);}
+  .about-stat{background:var(--pale);padding:22px;border-left:3px solid transparent;transition:border-color 0.3s;}
+  .about-stat:hover{border-left-color:var(--forest);}
+  .stat-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--forest);line-height:1;}
+  .stat-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);margin-top:5px;}
+  .about-card{background:var(--charcoal);padding:44px 38px;}
+  .about-accent{width:4px;height:56px;background:var(--forest);margin-bottom:26px;}
+  .about-card-quote{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;line-height:1.65;color:var(--pale);margin-bottom:22px;}
+  .about-card-source{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--olive-lt);}
+  .services{padding:120px 60px;background:var(--charcoal);}
+  .services-header{margin-bottom:60px;}
+  .services-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--olive-lt);margin-bottom:14px;}
+  .services-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.8vw,54px);font-weight:300;color:var(--pale);line-height:1.1;}
+  .services-heading em{font-style:italic;color:var(--olive-lt);}
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(245,249,247,0.04);}
+  .service-card{background:var(--charcoal);padding:46px 38px;position:relative;overflow:hidden;transition:background 0.3s;}
+  .service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--forest);transform:scaleX(0);transition:transform 0.4s;transform-origin:left;}
+  .service-card:hover{background:rgba(27,67,50,0.1);}
+  .service-card:hover::after{transform:scaleX(1);}
+  .service-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--olive-lt);margin-bottom:22px;opacity:0.7;}
+  .service-title{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;color:var(--pale);margin-bottom:14px;line-height:1.2;}
+  .service-body{font-size:14px;line-height:1.8;color:rgba(245,249,247,0.58);margin-bottom:26px;}
+  .service-tags{display:flex;flex-wrap:wrap;gap:7px;}
+  .service-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border:1px solid rgba(92,90,53,0.28);color:var(--olive-lt);}
+  .why{padding:120px 60px;background:var(--pale);}
+  .why-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;}
+  .why-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.2vw,48px);font-weight:400;line-height:1.15;color:var(--charcoal);margin-bottom:22px;}
+  .why-heading em{font-style:italic;color:var(--forest);}
+  .why-body{font-size:15px;line-height:1.85;color:var(--stone);}
+  .why-list{list-style:none;}
+  .why-item{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid rgba(27,67,50,0.11);}
+  .why-item:first-child{border-top:1px solid rgba(27,67,50,0.11);}
+  .why-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--stone);flex-shrink:0;margin-top:3px;transition:color 0.3s;}
+  .why-item:hover .why-num{color:var(--forest);}
+  .why-item-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--charcoal);margin-bottom:5px;}
+  .why-item-body{font-size:14px;line-height:1.7;color:var(--stone);}
+  .frameworks{padding:60px;background:var(--charcoal);}
+  .fw-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);text-align:center;margin-bottom:36px;}
+  .fw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(245,249,247,0.05);}
+  .fw-card{background:var(--charcoal);padding:26px 22px;text-align:center;transition:background 0.3s;}
+  .fw-card:hover{background:rgba(27,67,50,0.14);}
+  .fw-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--pale);margin-bottom:5px;line-height:1.3;}
+  .fw-jur{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--olive-lt);}
+  .contact{display:grid;grid-template-columns:1fr 1fr;min-height:580px;}
+  .contact-left{background:var(--forest);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+  .contact-right{background:var(--pale);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+  .contact-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.2vw,48px);font-weight:300;line-height:1.15;color:var(--pale);margin-bottom:22px;}
+  .contact-heading em{font-style:italic;color:rgba(245,249,247,0.55);}
+  .contact-body{font-size:15px;line-height:1.8;color:rgba(245,249,247,0.68);margin-bottom:36px;}
+  .contact-details{list-style:none;}
+  .contact-detail{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;}
+  .detail-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,249,247,0.45);margin-top:2px;min-width:56px;}
+  .detail-value{font-size:14px;color:var(--pale);}
+  .detail-value a{color:var(--pale);text-decoration:none;border-bottom:1px solid rgba(245,249,247,0.2);padding-bottom:1px;transition:border-color 0.3s;}
+  .detail-value a:hover{border-color:var(--pale);}
+  .contact-form-heading{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--charcoal);margin-bottom:28px;}
+  .form-group{margin-bottom:20px;}
+  .form-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:7px;}
+  .form-input{width:100%;padding:13px 15px;background:white;border:1px solid rgba(27,67,50,0.14);color:var(--charcoal);font-family:'Instrument Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.3s;}
+  .form-input:focus{border-color:var(--forest);}
+  .form-textarea{width:100%;padding:13px 15px;background:white;border:1px solid rgba(27,67,50,0.14);color:var(--charcoal);font-family:'Instrument Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.3s;resize:vertical;min-height:110px;}
+  .form-textarea:focus{border-color:var(--forest);}
+  .form-submit{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:15px 40px;background:var(--forest);color:var(--pale);border:1px solid var(--forest);cursor:pointer;transition:all 0.3s;width:100%;}
+  .form-submit:hover{background:transparent;color:var(--forest);}
+  .form-notice{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--forest);text-align:center;margin-top:10px;min-height:16px;}
+  footer{padding:44px 60px;background:var(--dark);display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(27,67,50,0.28);}
+  .footer-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--pale);}
+  .footer-tag{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--stone);margin-top:2px;}
+  .footer-left{display:flex;align-items:center;gap:14px;}
+  .footer-right{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);text-align:right;line-height:2.2;}
+  .fade-up{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+  .fade-up.visible{opacity:1;transform:translateY(0);}
+  @media(max-width:900px){
+    nav{padding:18px 24px;}
+    .nav-links{display:none;}
+    .hero{grid-template-columns:1fr;}
+    .hero-divider{display:none;}
+    .hero-left,.hero-right{padding:60px 24px;}
+    .about{grid-template-columns:1fr;padding:80px 24px;gap:48px;}
+    .services{padding:80px 24px;}
+    .services-grid{grid-template-columns:1fr;}
+    .why{padding:80px 24px;}
+    .why-inner{grid-template-columns:1fr;gap:48px;}
+    .fw-grid{grid-template-columns:repeat(2,1fr);}
+    .frameworks{padding:48px 24px;}
+    .contact{grid-template-columns:1fr;}
+    .contact-left,.contact-right{padding:60px 24px;}
+    footer{flex-direction:column;gap:20px;padding:36px 24px;text-align:center;}
+    .footer-right{text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="28" height="38" viewBox="0 0 60 80" fill="none">
+      <line x1="30" y1="78" x2="30" y2="50" stroke="#1B4332" stroke-width="2.5"/>
+      <circle cx="30" cy="44" r="5" fill="#1B4332"/>
+      <path d="M30 38 C20 35 12 23 15 13 C17 5 24 3 30 8" fill="#2E6B4A"/>
+      <path d="M30 8 C36 3 43 5 45 13 C48 23 40 35 30 38" fill="#2E6B4A"/>
+      <path d="M30 38 C23 33 19 20 21 10 C23 3 27 1 30 3" fill="#1B4332"/>
+      <path d="M30 3 C33 1 37 3 39 10 C41 20 37 33 30 38" fill="#1B4332"/>
+      <circle cx="30" cy="44" r="5" fill="#1B4332"/>
+    </svg>
+    <div><div class="nav-name">Curia <span>Advisory</span></div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
 
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag fade-up">AI Governance &amp; Legal Technology Advisory</div>
+    <h1 class="hero-headline fade-up">The law is not behind AI.<em>Most organisations just haven't found it yet.</em></h1>
+    <p class="hero-sub fade-up">Curia Advisory helps organisations in Zimbabwe and the region understand and manage the legal obligations, governance risks, and compliance requirements that already exist — before enforcement arrives.</p>
+    <div class="hero-actions fade-up">
+      <a href="#services" class="btn-dark">Our Services</a>
+      <a href="#about" class="btn-outline">About Us</a>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+  <div class="hero-right">
+    <div class="hero-right-tag fade-up">The regulatory landscape</div>
+    <h2 class="hero-right-heading fade-up">Governance requires <em>understanding what the law already says.</em></h2>
+    <ul class="hero-pillars fade-up">
+      <li class="hero-pillar"><span class="pillar-num">01</span><div class="pillar-text"><strong>CDPA 2021 is already in force</strong>Zimbabwe's Cyber and Data Protection Act imposes obligations on every organisation processing personal data — including through AI tools.</div></li>
+      <li class="hero-pillar"><span class="pillar-num">02</span><div class="pillar-text"><strong>National AI Strategy 2026–2030 is active</strong>Zimbabwe's blueprint for responsible AI adoption is now in place, governed by the National AI Council, AISIO, and the NDRC.</div></li>
+      <li class="hero-pillar"><span class="pillar-num">03</span><div class="pillar-text"><strong>Enforcement is coming</strong>The governance architecture is being built now. Organisations that prepare early will not be caught off guard.</div></li>
+      <li class="hero-pillar"><span class="pillar-num">04</span><div class="pillar-text"><strong>The window to prepare is open</strong>Build governance frameworks before enforcement arrives. Those that wait will be reactive — not proactive.</div></li>
+    </ul>
+  </div>
+</section>
 
-Curia Advisory
-GET IN TOUCH
-AI GOVERNANCE & LEGAL TECHNOLOGY ADVISORY
-The law is not behind AI.
-Most organisations just haven't found it yet.
-Curia Advisory helps organisations in Zimbabwe and the region understand and manage the legal obligations, governance risks, and compliance requirements that already exist — before enforcement arrives.
-OUR SERVICES
-ABOUT US
-THE REGULATORY LANDSCAPE
-Governance requires understanding what the law already says.
-		01 CDPA 2021 is already in force Zimbabwe's Cyber and Data Protection Act imposes obligations on every organisation processing personal data — including through AI tools. 02 National AI Strategy 2026–2030 is active Zimbabwe's blueprint for responsible AI adoption is now in place, governed by the National AI Council, AISIO, and the NDRC. 03 Enforcement is coming The governance architecture is being built now. Organisations that prepare early will not be caught off guard. 04 The window to prepare is open Build governance frameworks before enforcement arrives. Those that wait will be reactive — not proactive.
-AI GOVERNANCECDPA COMPLIANCELEGAL TECHNOLOGYDATA PROTECTIONREGULATORY ADVISORYPOLICY RESEARCHCAPACITY BUILDINGAI ETHICSAI GOVERNANCECDPA COMPLIANCELEGAL TECHNOLOGYDATA PROTECTIONREGULATORY ADVISORYPOLICY RESEARCHCAPACITY BUILDINGAI ETHICS
-ABOUT CURIA ADVISORY
-Advisory grounded in law, not aspiration.
-Curia Advisory is a dedicated AI Governance and Legal Technology advisory firm based in Harare, Zimbabwe. We exist because the regulatory landscape is moving faster than most organisations realise — and the legal obligations already in place are being consistently overlooked.
-Zimbabwe's Cyber and Data Protection Act has been in force since 2021. The National AI Strategy 2026–2030 is now active, governed by the National AI Council, the AI Strategy Implementation Office, and the National Digital Regulatory Committee. We help organisations understand what this means for them — specifically and practically.
-2021
-CDPA IN FORCE
-2026
-AI STRATEGY ACTIVE
-12
-TARGET SECTORS
-4
-SERVICE AREAS
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">AI Governance</div><div class="marquee-item">CDPA Compliance</div><div class="marquee-item">Legal Technology</div><div class="marquee-item">Data Protection</div><div class="marquee-item">Regulatory Advisory</div><div class="marquee-item">Policy Research</div><div class="marquee-item">Capacity Building</div><div class="marquee-item">AI Ethics</div><div class="marquee-item">AI Governance</div><div class="marquee-item">CDPA Compliance</div><div class="marquee-item">Legal Technology</div><div class="marquee-item">Data Protection</div><div class="marquee-item">Regulatory Advisory</div><div class="marquee-item">Policy Research</div><div class="marquee-item">Capacity Building</div><div class="marquee-item">AI Ethics</div>
+  </div>
+</div>
 
-"Governance does not begin with policy. It begins with people who understand what the law already requires."
-CURIA ADVISORY — EST. 2026
-WHAT WE DO
-Advisory built for the moment we are in.
-01
-AI Governance Advisory
-We help organisations build AI governance frameworks that are practical, legally grounded, and aligned with Zimbabwe's National AI Strategy and the Cyber and Data Protection Act. We assess current AI practices, identify governance gaps, and develop oversight structures that work in operational reality — not just on paper.
-FRAMEWORK DESIGN
-GAP ANALYSIS
-POLICY DEVELOPMENT
-OVERSIGHT STRUCTURES
-02
-CDPA Compliance Consulting
-The Cyber and Data Protection Act 2021 already imposes obligations on every organisation that processes personal data — including where AI tools are involved. We help you understand what the Act requires, map your current practices against those obligations, and build compliance programmes that protect your organisation and the people your systems affect.
-COMPLIANCE AUDIT
-DATA MAPPING
-POLICY DESIGN
-REGULATORY GUIDANCE
-03
-Legal Technology Research & Analysis
-We produce written analysis, policy briefs, and regulatory horizon scanning for organisations that need to understand how AI regulation is developing — in Zimbabwe, across Southern Africa, and internationally. Our comparative expertise covers the EU AI Act, UNESCO frameworks, OECD principles, and how these interact with Zimbabwe's own regulatory instruments.
-POLICY BRIEFS
-REGULATORY RESEARCH
-COMPARATIVE ANALYSIS
-HORIZON SCANNING
-04
-Training & Capacity Building
-We design and deliver workshops and training programmes on AI governance, data protection awareness, and legal technology for legal teams, boards, compliance functions, and public institutions. Our training is grounded in Zimbabwe's specific regulatory context — not generic international content applied without adaptation.
-BOARD TRAINING
-COMPLIANCE WORKSHOPS
-LEGAL TEAM SESSIONS
-PUBLIC SECTOR
-WHY CURIA ADVISORY
-The gap is not in the law. It is in who understands it.
-Most organisations know AI is changing how they operate. Very few have mapped what that means for their legal obligations. The advisory capability to bridge that gap is rare — particularly in Zimbabwe, where the conversation is still forming.
-		01 Zimbabwe-specific expertise We know the CDPA, the National AI Strategy, and how the NDRC, National AI Council, and AI Strategy Implementation Office govern the landscape. We do not apply international templates without adaptation.  02 International regulatory knowledge Our comparative training covers the EU AI Act, UNESCO AI Ethics Recommendation, OECD AI Principles, and South Africa's POPIA framework — and how they interact with Zimbabwe's instruments.  03 Published and peer-recognised Our analysis has engaged senior legal and governance professionals across Southern Africa. We publish, research, and contribute to the regional AI governance conversation.  04 Governance before the regulator arrives We help you build the right frameworks while you still have time to do it properly — not in response to an enforcement action or a breach. 
-KEY FRAMEWORKS WE WORK WITH
-Cyber & Data Protection Act
-ZIMBABWE · CH. 12:07 · 2021
-National AI Strategy 2026–2030
-ZIMBABWE · MARCH 2026
-EU AI Act
-EUROPEAN UNION · 2024
-UNESCO AI Ethics Recommendation
-INTERNATIONAL · 2021
-GET IN TOUCH
-Ready to govern AI properly?
-Whether you are assessing your CDPA obligations, building an AI governance framework, or trying to understand what Zimbabwe's regulatory direction means for your organisation — the conversation starts here.
-		EMAIL ruwa@curiaadvisory.co.zw GENERAL contact@curiaadvisory.co.zw LOCATION Harare, Zimbabwe REGION Zimbabwe · Southern Africa
-Send us a message
-FULL NAME
-EMAIL ADDRESS
-ORGANISATION (OPTIONAL)
-MESSAGE
-SEND MESSAGE
+<section class="about" id="about">
+  <div>
+    <div class="section-label fade-up">About Curia Advisory</div>
+    <h2 class="about-heading fade-up">Advisory grounded in <em>law, not aspiration.</em></h2>
+    <p class="about-body fade-up">Curia Advisory is a dedicated AI Governance and Legal Technology advisory firm based in Harare, Zimbabwe. We exist because the regulatory landscape is moving faster than most organisations realise — and the legal obligations already in place are being consistently overlooked.</p>
+    <p class="about-body fade-up">Zimbabwe's Cyber and Data Protection Act has been in force since 2021. The National AI Strategy 2026–2030 is now active, governed by the National AI Council, the AI Strategy Implementation Office, and the National Digital Regulatory Committee. We help organisations understand what this means for them — specifically and practically.</p>
+    <div class="about-stats fade-up">
+      <div class="about-stat"><div class="stat-num">2021</div><div class="stat-lbl">CDPA in force</div></div>
+      <div class="about-stat"><div class="stat-num">2026</div><div class="stat-lbl">AI Strategy active</div></div>
+      <div class="about-stat"><div class="stat-num">12</div><div class="stat-lbl">Target sectors</div></div>
+      <div class="about-stat"><div class="stat-num">4</div><div class="stat-lbl">Service areas</div></div>
+    </div>
+  </div>
+  <div class="fade-up">
+    <div class="about-card">
+      <div class="about-accent"></div>
+      <div class="about-card-quote">"Governance does not begin with policy. It begins with people who understand what the law already requires."</div>
+      <div class="about-card-source">Curia Advisory — Est. 2026</div>
+    </div>
+  </div>
+</section>
 
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="services-label">What We Do</div>
+    <h2 class="services-heading fade-up">Advisory built for <em>the moment we are in.</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <h3 class="service-title">AI Governance Advisory</h3>
+      <p class="service-body">We help organisations build AI governance frameworks that are practical, legally grounded, and aligned with Zimbabwe's National AI Strategy and the Cyber and Data Protection Act. We assess current AI practices, identify governance gaps, and develop oversight structures that work in operational reality — not just on paper.</p>
+      <div class="service-tags"><span class="service-tag">Framework Design</span><span class="service-tag">Gap Analysis</span><span class="service-tag">Policy Development</span><span class="service-tag">Oversight Structures</span></div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">02</div>
+      <h3 class="service-title">CDPA Compliance Consulting</h3>
+      <p class="service-body">The Cyber and Data Protection Act 2021 already imposes obligations on every organisation that processes personal data — including where AI tools are involved. We help you understand what the Act requires, map your current practices against those obligations, and build compliance programmes that protect your organisation and the people your systems affect.</p>
+      <div class="service-tags"><span class="service-tag">Compliance Audit</span><span class="service-tag">Data Mapping</span><span class="service-tag">Policy Design</span><span class="service-tag">Regulatory Guidance</span></div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">03</div>
+      <h3 class="service-title">Legal Technology Research &amp; Analysis</h3>
+      <p class="service-body">We produce written analysis, policy briefs, and regulatory horizon scanning for organisations that need to understand how AI regulation is developing — in Zimbabwe, across Southern Africa, and internationally. Our comparative expertise covers the EU AI Act, UNESCO frameworks, OECD principles, and how these interact with Zimbabwe's own regulatory instruments.</p>
+      <div class="service-tags"><span class="service-tag">Policy Briefs</span><span class="service-tag">Regulatory Research</span><span class="service-tag">Comparative Analysis</span><span class="service-tag">Horizon Scanning</span></div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">04</div>
+      <h3 class="service-title">Training &amp; Capacity Building</h3>
+      <p class="service-body">We design and deliver workshops and training programmes on AI governance, data protection awareness, and legal technology for legal teams, boards, compliance functions, and public institutions. Our training is grounded in Zimbabwe's specific regulatory context — not generic international content applied without adaptation.</p>
+      <div class="service-tags"><span class="service-tag">Board Training</span><span class="service-tag">Compliance Workshops</span><span class="service-tag">Legal Team Sessions</span><span class="service-tag">Public Sector</span></div>
+    </div>
+  </div>
+</section>
 
-Curia Advisory (Private) Limited
-Where law meets intelligence.
-AI · GOVERNANCE · LAW
-HARARE, ZIMBABWE
-ESTABLISHED 2026
-© 2026 CURIA ADVISORY (PRIVATE) LIMITED
+<section class="why" id="why">
+  <div class="why-inner">
+    <div>
+      <div class="section-label fade-up">Why Curia Advisory</div>
+      <h2 class="why-heading fade-up">The gap is not in the law. <em>It is in who understands it.</em></h2>
+      <p class="why-body fade-up">Most organisations know AI is changing how they operate. Very few have mapped what that means for their legal obligations. The advisory capability to bridge that gap is rare — particularly in Zimbabwe, where the conversation is still forming.</p>
+    </div>
+    <ul class="why-list">
+      <li class="why-item fade-up"><span class="why-num">01</span><div><div class="why-item-title">Zimbabwe-specific expertise</div><div class="why-item-body">We know the CDPA, the National AI Strategy, and how the NDRC, National AI Council, and AI Strategy Implementation Office govern the landscape. We do not apply international templates without adaptation.</div></div></li>
+      <li class="why-item fade-up"><span class="why-num">02</span><div><div class="why-item-title">International regulatory knowledge</div><div class="why-item-body">Our comparative training covers the EU AI Act, UNESCO AI Ethics Recommendation, OECD AI Principles, and South Africa's POPIA framework — and how they interact with Zimbabwe's instruments.</div></div></li>
+      <li class="why-item fade-up"><span class="why-num">03</span><div><div class="why-item-title">Published and peer-recognised</div><div class="why-item-body">Our analysis has engaged senior legal and governance professionals across Southern Africa. We publish, research, and contribute to the regional AI governance conversation.</div></div></li>
+      <li class="why-item fade-up"><span class="why-num">04</span><div><div class="why-item-title">Governance before the regulator arrives</div><div class="why-item-body">We help you build the right frameworks while you still have time to do it properly — not in response to an enforcement action or a breach.</div></div></li>
+    </ul>
+  </div>
+</section>
+
+<div class="frameworks">
+  <div class="fw-label">Key Frameworks We Work With</div>
+  <div class="fw-grid">
+    <div class="fw-card"><div class="fw-name">Cyber &amp; Data Protection Act</div><div class="fw-jur">Zimbabwe · Ch. 12:07 · 2021</div></div>
+    <div class="fw-card"><div class="fw-name">National AI Strategy 2026–2030</div><div class="fw-jur">Zimbabwe · March 2026</div></div>
+    <div class="fw-card"><div class="fw-name">EU AI Act</div><div class="fw-jur">European Union · 2024</div></div>
+    <div class="fw-card"><div class="fw-name">UNESCO AI Ethics Recommendation</div><div class="fw-jur">International · 2021</div></div>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="section-label fade-up" style="color:rgba(245,249,247,0.45);">Get in Touch</div>
+    <h2 class="contact-heading fade-up">Ready to govern AI <em>properly?</em></h2>
+    <p class="contact-body fade-up">Whether you are assessing your CDPA obligations, building an AI governance framework, or trying to understand what Zimbabwe's regulatory direction means for your organisation — the conversation starts here.</p>
+    <ul class="contact-details fade-up">
+      <li class="contact-detail"><span class="detail-label">Email</span><span class="detail-value"><a href="mailto:ruwa@curiaadvisory.co.zw">ruwa@curiaadvisory.co.zw</a></span></li>
+      <li class="contact-detail"><span class="detail-label">General</span><span class="detail-value"><a href="mailto:contact@curiaadvisory.co.zw">contact@curiaadvisory.co.zw</a></span></li>
+      <li class="contact-detail"><span class="detail-label">Location</span><span class="detail-value">Harare, Zimbabwe</span></li>
+      <li class="contact-detail"><span class="detail-label">Region</span><span class="detail-value">Zimbabwe · Southern Africa</span></li>
+    </ul>
+  </div>
+  <div class="contact-right">
+    <h3 class="contact-form-heading fade-up">Send us a message</h3>
+    <form class="fade-up" onsubmit="handleSubmit(event)">
+      <div class="form-group"><label class="form-label" for="name">Full Name</label><input class="form-input" type="text" id="name" name="name" placeholder="Your full name" required></div>
+      <div class="form-group"><label class="form-label" for="email">Email Address</label><input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required></div>
+      <div class="form-group"><label class="form-label" for="org">Organisation (optional)</label><input class="form-input" type="text" id="org" name="org" placeholder="Your organisation"></div>
+      <div class="form-group"><label class="form-label" for="message">Message</label><textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your organisation and what you need..." required></textarea></div>
+      <button type="submit" class="form-submit">Send Message</button>
+      <div class="form-notice" id="form-notice"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">
+    <svg width="22" height="30" viewBox="0 0 60 80" fill="none">
+      <line x1="30" y1="78" x2="30" y2="50" stroke="#F5F9F7" stroke-width="2"/>
+      <circle cx="30" cy="44" r="5" fill="#F5F9F7"/>
+      <path d="M30 38 C20 35 12 23 15 13 C17 5 24 3 30 8" fill="#2E6B4A"/>
+      <path d="M30 8 C36 3 43 5 45 13 C48 23 40 35 30 38" fill="#2E6B4A"/>
+      <path d="M30 38 C23 33 19 20 21 10 C23 3 27 1 30 3" fill="#F5F9F7"/>
+      <path d="M30 3 C33 1 37 3 39 10 C41 20 37 33 30 38" fill="#F5F9F7"/>
+      <circle cx="30" cy="44" r="5" fill="#F5F9F7"/>
+    </svg>
+    <div><div class="footer-name">Curia Advisory (Private) Limited</div><div class="footer-tag">Where law meets intelligence.</div></div>
+  </div>
+  <div class="footer-right">
+    <div>AI · Governance · Law</div>
+    <div>Harare, Zimbabwe</div>
+    <div>Established 2026</div>
+    <div style="opacity:0.35;margin-top:4px;">© 2026 Curia Advisory (Private) Limited</div>
+  </div>
+</footer>
+
+<script>
+  const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function a(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.hero .fade-up').forEach((el,i)=>{el.style.transitionDelay=(i*0.12)+'s';setTimeout(()=>el.classList.add('visible'),80+i*120);});
+  function handleSubmit(e){
+    e.preventDefault();
+    const n=document.getElementById('form-notice');
+    n.textContent='Thank you. We will be in touch shortly.';
+    e.target.reset();
+    setTimeout(()=>n.textContent='',5000);
+  }
+</script>
+</body>
+</html>
