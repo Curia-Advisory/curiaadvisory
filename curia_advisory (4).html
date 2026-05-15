@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curia Advisory | AI · Governance · Law</title>
+<meta name="description" content="Zimbabwe's dedicated AI Governance and Legal Technology advisory firm. CDPA compliance, AI governance frameworks, and regulatory advisory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --forest:#1B4332;--mid:#2E6B4A;--olive:#5C5A35;
+  --char:#2C2C2A;--sage:#F5F9F7;--stone:#888780;
+  --border:#C8D8CA;--white:#FFFFFF;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--char);background:var(--sage);line-height:1.6;overflow-x:hidden}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+.reveal.d5{transition-delay:.5s}.reveal.d6{transition-delay:.6s}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:var(--forest);
+  padding:0 max(1.5rem,5vw);height:70px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 16px rgba(0,0,0,.18);
+}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-mark{height:42px;width:auto;display:block}
+.nav-text{display:flex;flex-direction:column;gap:1px}
+.nav-name{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--sage);letter-spacing:1px;line-height:1}
+.nav-sub{font-family:var(--sans);font-size:7.5px;color:rgba(168,196,176,.75);letter-spacing:3.5px;text-transform:uppercase}
+.nav-right{display:flex;align-items:center;gap:4px}
+.nav-link{
+  font-family:var(--sans);font-size:12.5px;color:rgba(245,249,247,.7);
+  text-decoration:none;padding:6px 13px;letter-spacing:.03em;
+  border-radius:3px;transition:background .2s,color .2s;
+  display:none;
+}
+.nav-link:hover{background:rgba(255,255,255,.08);color:var(--sage)}
+.nav-sep{width:1px;height:26px;background:rgba(255,255,255,.12);margin:0 6px;display:none}
+.nav-ico{
+  display:flex;align-items:center;justify-content:center;
+  width:34px;height:34px;color:rgba(168,196,176,.7);
+  text-decoration:none;border-radius:4px;
+  transition:color .2s,background .2s;
+}
+.nav-ico:hover{color:var(--sage);background:rgba(255,255,255,.1)}
+.nav-ico svg{width:16px;height:16px}
+.nav-btn{
+  margin-left:10px;padding:8px 20px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(245,249,247,.3);
+  color:var(--sage);font-family:var(--sans);font-size:12px;font-weight:500;
+  letter-spacing:.08em;text-decoration:none;
+  transition:background .2s,border-color .2s;
+  display:none;
+}
+.nav-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(245,249,247,.5)}
+@media(min-width:860px){
+  .nav-link,.nav-sep,.nav-btn{display:block;display:flex;align-items:center}
+  .nav-btn{display:block}
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100svh;background:var(--sage);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(70px + 6vh) max(1.5rem,8vw) 0;
+  position:relative;overflow:hidden;
+}
+.hero-deco{
+  position:absolute;right:-80px;top:50%;transform:translateY(-50%);
+  opacity:.06;pointer-events:none;
+}
+.hero-deco img{height:60vh;width:auto;filter:blur(1px)}
+.hero-eyebrow{
+  font-family:var(--sans);font-size:10px;font-weight:600;
+  color:var(--olive);letter-spacing:4.5px;text-transform:uppercase;
+  margin-bottom:20px;display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--olive);display:inline-block}
+.hero-headline{
+  font-family:var(--serif);
+  font-size:clamp(34px,6.5vw,72px);
+  font-weight:900;color:var(--char);
+  line-height:1.1;max-width:800px;margin-bottom:10px;
+}
+.hero-headline em{font-style:italic;color:var(--forest)}
+.hero-sub{
+  font-family:var(--sans);font-size:15px;
+  color:var(--stone);line-height:1.75;
+  max-width:520px;margin-bottom:36px;margin-top:12px;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 32px;background:var(--forest);
+  color:var(--sage);font-family:var(--sans);font-size:12.5px;
+  font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;border:2px solid var(--forest);
+  transition:background .25s,color .25s;align-self:flex-start;
+}
+.hero-cta:hover{background:transparent;color:var(--forest)}
+.hero-cta svg{width:14px;height:14px;transition:transform .2s}
+.hero-cta:hover svg{transform:translateX(4px)}
+.hero-stripe{
+  margin-top:56px;display:flex;flex-wrap:wrap;gap:0;
+  border-top:1px solid var(--border);
+}
+.hero-stat{
+  padding:20px 32px;border-right:1px solid var(--border);
+  flex:1;min-width:140px;
+}
+.hero-stat:last-child{border-right:none}
+.hero-stat-val{
+  font-family:var(--serif);font-size:28px;font-weight:700;
+  color:var(--forest);line-height:1;
+}
+.hero-stat-lbl{
+  font-family:var(--sans);font-size:10.5px;color:var(--stone);
+  letter-spacing:.04em;margin-top:4px;
+}
+
+/* ── COUNTDOWN STRIP ── */
+.cd-strip{
+  background:var(--char);padding:18px max(1.5rem,5vw);
+  display:flex;align-items:center;justify-content:center;gap:32px;
+  flex-wrap:wrap;row-gap:12px;
+}
+.cd-strip-label{
+  font-family:var(--sans);font-size:10px;font-weight:600;
+  color:rgba(168,196,176,.65);letter-spacing:3.5px;text-transform:uppercase;
+  white-space:nowrap;
+}
+.cd-strip-clock{display:flex;align-items:center;gap:8px}
+.cd-strip-unit{display:flex;align-items:baseline;gap:4px}
+.cd-strip-num{
+  font-family:var(--serif);font-size:26px;font-weight:700;
+  color:rgba(168,196,176,.9);line-height:1;
+  min-width:40px;text-align:right;
+}
+.cd-strip-lbl{
+  font-family:var(--sans);font-size:9px;color:var(--stone);
+  letter-spacing:2px;text-transform:uppercase;
+}
+.cd-sep{color:rgba(168,196,176,.3);font-size:22px;font-family:var(--serif)}
+.cd-strip-note{
+  font-family:var(--sans);font-size:10.5px;
+  color:rgba(136,135,128,.6);white-space:nowrap;
+}
+
+/* ── SECTION SHELL ── */
+.section{padding:80px max(1.5rem,8vw)}
+.section-head{margin-bottom:52px}
+.section-label{
+  font-family:var(--sans);font-size:10px;font-weight:600;
+  color:var(--olive);letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.section-label::before{content:'';width:22px;height:1px;background:var(--olive);display:inline-block}
+.section-title{
+  font-family:var(--serif);
+  font-size:clamp(24px,4vw,38px);
+  font-weight:700;color:var(--char);line-height:1.2;
+  max-width:600px;
+}
+.section-title.light{color:var(--sage)}
+
+/* ── SERVICES ── */
+.services{background:var(--sage)}
+.svc-tabs{
+  display:flex;gap:2px;margin-bottom:36px;
+  border-bottom:2px solid var(--border);
+}
+.svc-tab{
+  font-family:var(--sans);font-size:12.5px;font-weight:500;
+  color:var(--stone);padding:10px 20px;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-2px;
+  transition:color .2s,border-color .2s;background:none;border-top:none;border-left:none;border-right:none;
+}
+.svc-tab.active{color:var(--forest);border-bottom-color:var(--forest);font-weight:600}
+.svc-tab:hover{color:var(--char)}
+.svc-panel{display:none}
+.svc-panel.active{display:block}
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+}
+.svc-card{
+  background:var(--white);padding:36px 28px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:background .2s,transform .2s;
+  position:relative;overflow:hidden;cursor:default;
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--forest);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.svc-card:hover{background:var(--sage);transform:translateY(-3px)}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-q{
+  font-family:var(--serif);font-size:15px;font-style:italic;
+  color:var(--forest);line-height:1.55;flex:1;
+}
+.svc-name{
+  font-family:var(--sans);font-size:9.5px;font-weight:700;
+  color:var(--stone);letter-spacing:2.5px;text-transform:uppercase;
+  padding-top:14px;border-top:1px solid var(--border);
+}
+.svc-desc{font-family:var(--sans);font-size:13px;color:var(--stone);line-height:1.6}
+.svc-list{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:2px;
+  background:var(--border);border:1px solid var(--border);
+}
+.svc-item{
+  background:var(--white);padding:28px 30px;
+  display:flex;gap:18px;align-items:flex-start;
+  transition:background .2s;
+}
+.svc-item:hover{background:var(--sage)}
+.svc-num{
+  font-family:var(--serif);font-size:28px;font-weight:700;
+  color:var(--border);line-height:1;flex-shrink:0;width:32px;
+}
+.svc-info{}
+.svc-item-name{
+  font-family:var(--serif);font-size:16px;font-weight:700;
+  color:var(--char);margin-bottom:6px;
+}
+.svc-item-desc{font-family:var(--sans);font-size:13px;color:var(--stone);line-height:1.6}
+.svc-item-meta{
+  font-family:var(--sans);font-size:10px;font-weight:600;
+  color:var(--olive);letter-spacing:1.5px;text-transform:uppercase;
+  margin-top:8px;
+}
+@media(max-width:860px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc-list{grid-template-columns:1fr}
+  .svc-card:hover{transform:none}
+}
+
+/* ── PUBLICATIONS ── */
+.publications{background:var(--forest)}
+.pub-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.pub-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  padding:44px 40px;display:flex;flex-direction:column;gap:18px;
+  transition:background .2s;
+}
+.pub-card:hover{background:rgba(255,255,255,.09)}
+.pub-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pub-date{font-family:var(--sans);font-size:10px;color:rgba(168,196,176,.6);letter-spacing:2px;text-transform:uppercase}
+.pub-tag{font-family:var(--sans);font-size:9px;font-weight:600;color:var(--olive);letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border:1px solid var(--olive)}
+.pub-name{font-family:var(--serif);font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--sage);line-height:1.3}
+.pub-quote{
+  font-family:var(--serif);font-size:14px;font-style:italic;
+  color:rgba(168,196,176,.82);line-height:1.7;
+  padding-left:16px;border-left:2px solid var(--olive);flex:1;
+}
+.pub-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--sans);font-size:11px;font-weight:600;
+  color:rgba(168,196,176,.75);text-decoration:none;
+  letter-spacing:1.5px;text-transform:uppercase;transition:color .2s,gap .2s;
+}
+.pub-link:hover{color:var(--sage);gap:14px}
+@media(max-width:760px){.pub-grid{grid-template-columns:1fr}}
+
+/* ── ABOUT ── */
+.about{background:var(--sage)}
+.about-inner{
+  display:grid;grid-template-columns:auto 1fr;
+  gap:72px;align-items:center;
+}
+.about-visual{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px;background:var(--white);border:1px solid var(--border);
+  min-width:220px;
+}
+.about-visual img{height:120px;width:auto}
+.about-visual-tag{
+  margin-top:16px;font-family:var(--sans);font-size:9px;font-weight:600;
+  color:var(--stone);letter-spacing:3px;text-transform:uppercase;text-align:center;
+}
+.about-eyebrow{font-family:var(--sans);font-size:10px;font-weight:600;color:var(--olive);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.about-eyebrow::before{content:'';width:22px;height:1px;background:var(--olive);display:inline-block}
+.about-stmt{
+  font-family:var(--serif);
+  font-size:clamp(18px,2.8vw,24px);
+  color:var(--char);line-height:1.7;margin-bottom:24px;
+  font-style:italic;
+}
+.about-stmt::before{content:'C';font-size:3em;color:var(--border);line-height:0;vertical-align:-.4em;margin-right:4px}
+.about-rule{width:36px;height:2px;background:var(--forest);margin-bottom:16px}
+.about-who{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--forest);margin-bottom:2px}
+.about-role{font-family:var(--sans);font-size:11.5px;color:var(--stone)}
+@media(max-width:860px){
+  .about-inner{grid-template-columns:1fr}
+  .about-visual{display:none}
+}
+
+/* ── CONTACT ── */
+.contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
+.contact-info-list{margin-top:28px;display:flex;flex-direction:column;gap:0}
+.contact-row{
+  display:flex;align-items:center;gap:14px;padding:14px 0;
+  border-bottom:1px solid var(--border);
+  font-family:var(--sans);font-size:13.5px;color:var(--char);
+  text-decoration:none;transition:color .2s;
+}
+.contact-row:hover{color:var(--forest)}
+.contact-row svg{width:16px;height:16px;flex-shrink:0;color:var(--forest)}
+.contact-soc{margin-top:20px;display:flex;gap:10px}
+.contact-soc-a{
+  display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border:1px solid var(--border);
+  color:var(--stone);text-decoration:none;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.contact-soc-a:hover{border-color:var(--forest);color:var(--forest);background:var(--sage)}
+.contact-soc-a svg{width:16px;height:16px}
+/* Form */
+.contact-form{}
+form label{
+  display:block;font-family:var(--sans);font-size:11px;font-weight:600;
+  color:var(--stone);letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;
+}
+form input,form select,form textarea{
+  width:100%;padding:13px 16px;
+  border:1px solid var(--border);background:var(--sage);
+  font-family:var(--sans);font-size:14px;color:var(--char);
+  outline:none;transition:border-color .2s;margin-bottom:20px;
+  border-radius:0;appearance:none;
+}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--forest);background:var(--white)}
+form textarea{resize:vertical;min-height:120px}
+form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{
+  width:100%;padding:15px;background:var(--forest);
+  color:var(--sage);font-family:var(--sans);font-size:12.5px;
+  font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  border:2px solid var(--forest);cursor:pointer;
+  transition:background .25s,color .25s;
+}
+.form-submit:hover{background:transparent;color:var(--forest)}
+.form-note{font-family:var(--sans);font-size:11px;color:var(--stone);margin-top:10px;text-align:center}
+.form-success{
+  display:none;padding:16px;background:rgba(27,67,50,.08);
+  border:1px solid var(--forest);
+  font-family:var(--sans);font-size:13.5px;color:var(--forest);
+  text-align:center;margin-top:12px;
+}
+@media(max-width:760px){
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr!important}
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--forest);padding:60px max(1.5rem,5vw) 32px;
+  border-top:3px solid var(--olive);
+}
+.ft-top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;
+  gap:52px;margin-bottom:40px;padding-bottom:40px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.ft-logo{display:flex;align-items:center;gap:12px;margin-bottom:14px;text-decoration:none}
+.ft-logo img{height:42px;width:auto}
+.ft-logo-name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--sage);letter-spacing:1.5px}
+.ft-logo-sub{font-family:var(--sans);font-size:7.5px;color:rgba(168,196,176,.55);letter-spacing:4px}
+.ft-about{font-family:var(--sans);font-size:12.5px;color:rgba(245,249,247,.45);line-height:1.7;max-width:250px}
+.ft-head{font-family:var(--sans);font-size:9.5px;font-weight:700;color:rgba(168,196,176,.6);letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.ft-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.ft-list li a,.ft-list li span{font-family:var(--sans);font-size:12.5px;color:rgba(245,249,247,.5);text-decoration:none;transition:color .2s;display:block}
+.ft-list li a:hover{color:var(--sage)}
+.ft-soc{display:flex;flex-direction:column;gap:10px}
+.ft-soc-a{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-size:12.5px;color:rgba(245,249,247,.5);text-decoration:none;transition:color .2s}
+.ft-soc-a:hover{color:var(--sage)}
+.ft-soc-a svg{width:14px;height:14px;flex-shrink:0}
+.ft-btm{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ft-copy{font-family:var(--sans);font-size:11px;color:rgba(136,135,128,.55)}
+.ft-reg{font-family:var(--sans);font-size:11px;color:rgba(136,135,128,.35)}
+@media(max-width:860px){.ft-top{grid-template-columns:1fr;gap:32px}}
+
+/* ── SCROLL TO TOP ── */
+#totop{
+  position:fixed;bottom:28px;right:24px;z-index:900;
+  width:42px;height:42px;background:var(--forest);color:var(--sage);
+  display:flex;align-items:center;justify-content:center;
+  border:none;cursor:pointer;opacity:0;transform:translateY(10px);
+  transition:opacity .3s,transform .3s;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+}
+#totop.show{opacity:1;transform:none}
+#totop:hover{background:var(--mid)}
+#totop svg{width:18px;height:18px;transform:rotate(-90deg)}
+</style>
+</head>
+<body>
+
+<!-- ══ SCROLL TO TOP ══ -->
+<button id="totop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></button>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="#top" class="nav-brand" aria-label="Curia Advisory home">
+    <img class="nav-mark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAAEjCAYAAACvoOphAAALAElEQVR4nO3d32sU5x7H8e+cLDaWQoz+DRW8qAVhRYoeL7QE4QT6pwpbkG3jhT2eIl0ItL0Q2r8hxkA1G9kl50KnXePOr31+fmber0ttsuPknWe/8+zstnhzdmqAin+lPgCgC4KFFIKFFIKFFIKFFIKFFIKFFIKFFIKFFIKFFIKFFIKFFIKFFIKFlFHqA8jFYrmwJ4dPz5v+u0e3HhSjLX+nLdXjqiqGfD/saiz7473WXzeZTc3MLaLJbLrx4z746t/F59uXN3pcdYMJdrFc2pPDg49Wsi6xrFMGtD/eKzp8TedQ6x679PDm/eLyZ9tO31NB74JdF+Yq11DWmcymjateuZqHevwqfQu5F8E2RWoWJtSLXp0cF1d3dtf9uf3vj1+CxLqqLlyzfsQrHWz59NokRqylyWz60Yjw6uTYru7stjpOX4/fRpcxJieSwbYN1SxurKUy2tixXjyGNtTClQr29GxuB789y25VXWflgiz5MTS5e+NOsfvFTuCj8UMm2NxX1Vy1jdbM7NGth8Voayvg0bjLPtguq6oZsa7TJdrcV9usg+2yqpoRa50u0ZrlO9tmey9B11hRr+sv82Q2PV8sl4GOZnPZBbtYLjeKldW1Wddz9OTwILtoswq2zQsA6xBrOE8OD86P/zpJfRh/yyZYYo1jk/P1/OWLbKLNIlhijUs52iyC3SRWuNk02tQzbfJgN90NYHVNI/WFWNJgiTWtTc9jymfEZMGyz6ot1c8vSbAuwzurq18u5zNFtNGDXSyX9vzlC1bXjLhEG3uejR6sy/zD6pqf2PNs1GBdnkKINSyV0SBasKn37xDW6dk8yuNEC5ZRIH8u57nLPcsuogTLFtYwxPg5J3+lC3lxfTYLPfoFD9b1t45xQEvoXYOgwXKhNUwhL8CCBuv628bqmobreQ95ARYsWFbXYQt172ywYLnHVZvrKhvq5fcgwfpYXRkH9IVYZYMEy+oKszCrrPdgmV2xyveOgfdgWV2xyveOAa90ITifz7peg+WeAazj81mXFRaVctyp8Rasz2U/xxMFN762uLwFy8UW6vja4mIkgBSCRTQ+9mS9BMvuANrwsSfLCgspBAspBIuoXOdY52Bz+JBb6HCdY52D5XOyEBMjAaQQLKQQLKJzue/EKVjeXYBNuNx34hQsN7wgNkYCSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSMky2MlsmvoQkKksgwWqECwq5fhMR7CQQrCQQrCQQrCQkm2wOQ78SC/bYJFWrgsGwUIKwUKKU7APb94vfB0I0IZTsJc/2/Z1HBgQl4Uu65Eg18G/70Kfd5eFLutggYsIFlIIFlKcg90f7wXdKWCOjSv0+b57445TL6ywiGr3ix2nrydYSJEIlrEAJS/Bhp5jEUfu86uZyAqLfnCdX80IFmK8BRv6Rhjm2LBUzq+3YLkRBnV8XedIjQQqqwDC8Ros98dqUloIvAbLWIB1fG57So0EZlqrgQK18+k9WF5EwCrfY6LcCmumtyoMme8xMUiwXHxpUPzFDxIsF18wCzMeSo4EZpqrQ05Uz1+wYLn4GrZQP3/ZFdZMd5VITfm8BQ2WVXaYQv7cpVdYM+3VIgX18xU8WFbZYQn9846ywnKvbB76cJ6iBMu+7DDEeDaNNsM+uvWQVTah0Ocn1qub0YIdbW0FfwyiTSfWs2jUXQIuwNII/Ysc8+cafVuL0SAuhc8a6CJ6sIwG/eLjswa6SPLCAaNBHH0aBUrJXuliNAirL7sCFyULdrS1FXz+GXq0IaXaW096L0Hs+Wco+jgKlJLf/MInePvV51jNMgjWjGh9Cf3vDH3d0UYWwZpxEZa7uzfuFDG2JJtkEywXYW5C/9tyud7IJliz9ycl9isnfdD3uXVVVsGahf9N7tsqO6RYzTIM1oyLsLaGFqtZpsGaEW2TIcZqlnGwZkRbZaixmmUerBnRXjTkWM3Mijdnp6mPoZXjv07s+csX56G+//54L9S39mbosZoJBWtmdno2t4Pfng0y2pCx3r1xp8hln7WJVLBmZovl0p4cHgSL1iy/cEPG+vDm/ULpXc1ywZYms2nvo41xb0AOL7d2kf1FV5W+X4zFmFfVYjUTXmFLfZxrubiqJh9sqQ8jAiNAM9mR4CL1EYERoJ3erLAltV0EVtVuehdsKfQLDWZu4ca4qFOeVav0NthS6NnWrHu4rKqb632wZnHGBLPmcAnV3SCCLYXeAiuthhvjqV/t1SoXgwq2FCvc0IYUammQwZZijQq+DTHU0qCDXRXj4szVEGbUJgR7QW7jgtKtfzEQbI2Uq24f91B9INiW2rwQUbet1Wa3gEibEewGVi/WNnm1q4x3yBdPmyLYjiaz6bnvewlYWdsj2JaOXr+yn/+ceY11FeG2Q7At+F5Vax6HaBsQbIMusTZdWLX9PvN382L7ErPtOgRbYf5ubtuXthu3tSazqd27fru4trPb+D2PTo7tv3/80upijdV2PYKtVhvrZDa1/9x6UIy2Rht988cf9njrwmWl/RTBrlE3BriGumqxXNj3h0+bRg5W2RW9eU+XL02xfjfe8xKrmdloa2TfjfeKutlX4R6HmFhhVxy9fmXXrlxdG0gZa7DHPjm2Kzu7lY/NPPseK+yKn/+cJYnVzOzazm7lLkMOn0KTC4L9oGoUiBFrqW48YDR4j5HgH2uDOF8uvM2sbT2u+OVh14AV1syqV6/JbGqxY63z46/53KebCsFWKLevUjx2087BkBGsVV/U5LS6mnHxZUawdvT61do/v3f9dtJtpKrVfegXX4MPdt1W1mQ2tTb3BoQ02hol/4zaHA0+WGghWDFDn2MJFlIGH+zQVyw1gw+WCxstgw8WWghWzNCfEQgWUgh2jf3xnr2dp7+LjQvCTw0+2Ko7+X/4/aekL4E+rngJ9tuv7w/6nQeDD9ZMZy6czKbG/bBYa3+8V7nKhfZ2fso4UIFgLb+PuawaR775cpzVcaZAsB+sGwtSrLJVb4+ZzKZ27crVmIeSJd7T9bFk75o1q3+rN+/neo8VdkXd26yPTo6DPvZiuaj9XAJifY9gV+zXvJfqys7ueajx4Ojk2L4/fFr5vXObsVNiJLig6VMLfY8HVTPryvEwCqwg2DXaRGtmTuG+nZ/aD7//VBsrH1H0KYKt0OaDjDcJt/yMWD4fdjMEW6Puw+Euujj73rt+uyg/vLjU5ZO8iXU9gm0wfze3H399FuX/cfDh8ZhZa7BL0GD70nbt7oEvk9mUWFtghe0gxGo7mU3t26/vE2pLBLuBMlyzze9Zncym9s2X44KXW7shWEddVl1WU3cE60+b3QSu/B1x0QUpBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBOvJZDZ1+nu0Q7CQUrw5O019DL0xmU3P98d7VX9dxDyWviJYzyaz6bmZ2f547+8x4NGtB8Voa5T0uPqCYAN5Oz+1z7cvpz6M3mGGDYRYwyBYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSPk/NRoJgtnbsYsAAAAASUVORK5CYII=" alt="Curia Advisory mark">
+    <div class="nav-text">
+      <span class="nav-name">CURIA</span>
+      <span class="nav-sub">ADVISORY</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#publications">Publications</a>
+    <a class="nav-link" href="#about">About</a>
+    <div class="nav-sep"></div>
+    <a class="nav-ico" href="https://www.linkedin.com/company/curia-advisory/about/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="7" y1="11" x2="7" y2="17"/><line x1="7" y1="7" x2="7" y2="7.5"/><path d="M11 17v-4c0-1.1.9-2 2-2s2 .9 2 2v4"/><line x1="11" y1="11" x2="11" y2="17"/></svg></a>
+    <a class="nav-ico" href="https://www.instagram.com/curiaadvisory?igsh=YjdnZjlvdjc5cm12" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a class="nav-ico" href="https://wa.me/message/AU6PO73KM3BEM1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.06L2 22l5.06-1.37C8.42 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.93 14.07c-.23.64-1.33 1.22-1.84 1.3-.48.06-1.08.09-1.74-.11-.4-.12-.9-.3-1.56-.58-2.74-1.18-4.54-3.95-4.68-4.13C6.97 12.37 6 11.1 6 9.78c0-1.32.7-1.97.95-2.24.25-.27.54-.34.72-.34H8c.16 0 .38-.07.6.47.22.54.76 1.86.83 1.99.07.13.11.29.02.46-.09.17-.13.28-.26.43-.14.15-.28.33-.4.45-.13.12-.27.25-.12.5.16.25.68 1.12 1.46 1.81 1.33 1.08 2.37 1.43 2.78 1.58.26.1.43.09.59-.06.18-.17.73-.86.93-1.15.2-.29.39-.24.66-.14l1.84.87c.2.09.32.13.36.21.04.09.04.45-.18 1.08z"/></svg></a>
+    <a class="nav-btn" href="#contact">Get In Touch</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="top">
+  <div class="hero-deco" aria-hidden="true">
+    <img src="data:image/png;base64,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" alt="">
+  </div>
+  <p class="hero-eyebrow reveal">AI Governance &nbsp;·&nbsp; Legal Technology &nbsp;·&nbsp; Zimbabwe</p>
+  <h1 class="hero-headline reveal d1">Zimbabwe's organisations are<br>already regulated.<br><em>Most just don't know it.</em></h1>
+  <p class="hero-sub reveal d2">The Cyber and Data Protection Act has been in force since December 2021. Curia Advisory helps organisations understand their obligations and build governance frameworks that hold up under scrutiny.</p>
+  <a href="#services" class="hero-cta reveal d3">Find out where you stand <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
+  <div class="hero-stripe">
+    <div class="hero-stat reveal">
+      <div class="hero-stat-val">4+</div>
+      <div class="hero-stat-lbl">Years CDPA in force</div>
+    </div>
+    <div class="hero-stat reveal d1">
+      <div class="hero-stat-val">8</div>
+      <div class="hero-stat-lbl">Legal principles apply now</div>
+    </div>
+    <div class="hero-stat reveal d2">
+      <div class="hero-stat-val">0</div>
+      <div class="hero-stat-lbl">Orgs with formal AI compliance analysis</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COUNTDOWN STRIP (separate — no overlap) ══ -->
+<div class="cd-strip">
+  <span class="cd-strip-label">Zimbabwe AI Strategy · Phase 1</span>
+  <div class="cd-strip-clock">
+    <div class="cd-strip-unit"><div class="cd-strip-num" id="cd-d">230</div><div class="cd-strip-lbl">days</div></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-strip-unit"><div class="cd-strip-num" id="cd-h">14</div><div class="cd-strip-lbl">hrs</div></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-strip-unit"><div class="cd-strip-num" id="cd-m">32</div><div class="cd-strip-lbl">min</div></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-strip-unit"><div class="cd-strip-num" id="cd-s">07</div><div class="cd-strip-lbl">sec</div></div>
+  </div>
+  <span class="cd-strip-note">Closes 31 December 2026</span>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<section class="section services" id="services">
+  <div class="section-head reveal">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our Services</h2>
+  </div>
+  <div class="svc-tabs" role="tablist">
+    <button class="svc-tab active" role="tab" onclick="switchTab('questions',this)">Six Questions to Consider</button>
+    <button class="svc-tab" role="tab" onclick="switchTab('list',this)">Full Service List</button>
+  </div>
+
+  <!-- PANEL 1: QUESTIONS -->
+  <div class="svc-panel active" id="panel-questions">
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <p class="svc-q">"Does your organisation know which AI tools it uses and what legal obligations each one creates?"</p>
+        <div class="svc-name">AI Governance Advisory</div>
+      </div>
+      <div class="svc-card reveal d1">
+        <p class="svc-q">"When did you last formally assess your data practices against all 8 principles of the CDPA?"</p>
+        <div class="svc-name">CDPA Compliance Audit</div>
+      </div>
+      <div class="svc-card reveal d2">
+        <p class="svc-q">"What would a formal assessment reveal about the legal risks in your current AI operations?"</p>
+        <div class="svc-name">AI Risk Assessment</div>
+      </div>
+      <div class="svc-card reveal d1">
+        <p class="svc-q">"Are you making decisions based on what the regulatory landscape actually says, or what you assume it says?"</p>
+        <div class="svc-name">Policy &amp; Regulatory Research</div>
+      </div>
+      <div class="svc-card reveal d2">
+        <p class="svc-q">"Do your AI vendor contracts protect your data rights and limit your CDPA exposure before you sign?"</p>
+        <div class="svc-name">Vendor Contract Assessment</div>
+      </div>
+      <div class="svc-card reveal d3">
+        <p class="svc-q">"Does your team understand the regulatory environment they are already operating in?"</p>
+        <div class="svc-name">Training &amp; Workshops</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: FULL LIST -->
+  <div class="svc-panel" id="panel-list">
+    <div class="svc-list">
+      <div class="svc-item"><div class="svc-num">01</div><div class="svc-info"><div class="svc-item-name">AI Governance Advisory</div><p class="svc-item-desc">We build governance frameworks that map your AI use to your CDPA obligations — AI inventory, legal basis register, risk classification, AI Use Policy, and implementation roadmap.</p><div class="svc-item-meta">3 to 4 weeks</div></div></div>
+      <div class="svc-item"><div class="svc-num">02</div><div class="svc-info"><div class="svc-item-name">CDPA Compliance Audit</div><p class="svc-item-desc">Full written audit across all 8 CDPA principles, with a risk-prioritised gap analysis, recommended actions, and draft Data Protection Policy.</p><div class="svc-item-meta">2 to 3 weeks</div></div></div>
+      <div class="svc-item"><div class="svc-num">03</div><div class="svc-info"><div class="svc-item-name">AI Risk Assessment</div><p class="svc-item-desc">Sector-specific risk mapping for law firms, financial institutions, NGOs, corporates, and government bodies. Includes written report and AI Use Policy draft.</p><div class="svc-item-meta">1 to 2 weeks</div></div></div>
+      <div class="svc-item"><div class="svc-num">04</div><div class="svc-info"><div class="svc-item-name">Policy &amp; Regulatory Research</div><p class="svc-item-desc">Policy briefs and research memos that translate regulatory developments into Zimbabwe-specific, actionable insight. No generic summaries.</p><div class="svc-item-meta">1 to 2 weeks</div></div></div>
+      <div class="svc-item"><div class="svc-num">05</div><div class="svc-info"><div class="svc-item-name">Legal Technology Research Memo</div><p class="svc-item-desc">Concise written answer to a specific regulatory or legal technology question. 1,000 to 2,000 words with full citations.</p><div class="svc-item-meta">3 to 5 days</div></div></div>
+      <div class="svc-item"><div class="svc-num">06</div><div class="svc-info"><div class="svc-item-name">AI Vendor Contract Assessment</div><p class="svc-item-desc">Review of AI tool vendor agreements for data ownership gaps, missing DPAs, training data clauses, and CDPA compliance before you sign.</p><div class="svc-item-meta">5 to 7 days</div></div></div>
+      <div class="svc-item"><div class="svc-num">07</div><div class="svc-info"><div class="svc-item-name">Training &amp; Workshops</div><p class="svc-item-desc">Half-day and full-day sessions on CDPA compliance, AI governance, and legal technology. Materials, workbook, and 90-day action plan included.</p><div class="svc-item-meta">2 to 3 weeks lead time</div></div></div>
+      <div class="svc-item"><div class="svc-num">08</div><div class="svc-info"><div class="svc-item-name">Regulatory Horizon Scanning</div><p class="svc-item-desc">Monthly briefing on AI regulation and data protection developments in Zimbabwe and the region. Delivered as a PDF on the last working day of each month.</p><div class="svc-item-meta">Monthly retainer</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PUBLICATIONS ══ -->
+<section class="section publications" id="publications">
+  <div class="section-head reveal">
+    <div class="section-label" style="color:rgba(168,196,176,.65)">Published Work</div>
+    <h2 class="section-title light">Analysis from the ground up</h2>
+  </div>
+  <div class="pub-grid">
+    <article class="pub-card reveal d1">
+      <div class="pub-meta"><span class="pub-date">25 April 2026</span><span class="pub-tag">Constitutional Law</span></div>
+      <h3 class="pub-name">An Analysis of Constitutional Amendment Bill No. 3 (Zimbabwe)</h3>
+      <blockquote class="pub-quote">The Bill raises questions about oversight mechanisms that Zimbabwe's legal community needs to engage with carefully and early, before the amendments are in place.</blockquote>
+      <a class="pub-link" href="https://www.linkedin.com/in/ruwalauryn" target="_blank" rel="noopener">Read on LinkedIn</a>
+    </article>
+    <article class="pub-card reveal d2">
+      <div class="pub-meta"><span class="pub-date">12 May 2026</span><span class="pub-tag">AI Governance</span></div>
+      <h3 class="pub-name">Zimbabwe National AI Strategy 2026-2030: Implementation, Governance, and the Law</h3>
+      <blockquote class="pub-quote">The governance bodies exist on paper. The question is whether they are operationalised before the window for proactive compliance closes on organisations across Zimbabwe.</blockquote>
+      <a class="pub-link" href="https://www.linkedin.com/in/ruwalauryn" target="_blank" rel="noopener">Read on LinkedIn</a>
+    </article>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="section about" id="about">
+  <div class="section-head reveal">
+    <div class="section-label">About Curia Advisory</div>
+    <h2 class="section-title">Where law meets intelligence</h2>
+  </div>
+  <div class="about-inner">
+    <div class="about-visual reveal">
+      <img src="data:image/png;base64,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" alt="Curia Advisory logo mark">
+      <div class="about-visual-tag">Curia Advisory<br>Harare, Zimbabwe</div>
+    </div>
+    <div>
+      <div class="about-eyebrow reveal">From the Founder</div>
+      <p class="about-stmt reveal d1">Curia Advisory started from a simple observation I kept coming back to. Many organisations are already covered by the Cyber and Data Protection Act, but do not always recognise it in practice. The gap between regulation and awareness is exactly what this firm is focused on closing.</p>
+      <div class="about-rule reveal d2"></div>
+      <p class="about-who reveal d2">Ruwa Lauryn</p>
+      <p class="about-role reveal d2">Founder, Curia Advisory (Private) Limited &nbsp;·&nbsp; LLB International and European Law, The Hague University of Applied Sciences</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="section contact" id="contact">
+  <div class="section-head reveal">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Get in touch</h2>
+    <p style="font-family:var(--sans);font-size:14px;color:var(--stone);margin-top:12px;max-width:440px">We offer a no-obligation 30-minute discovery call to all new enquiries. Reach out through any of the channels below.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="contact-info-list">
+        <a class="contact-row" href="mailto:ruwa@curiaadvisory.co.zw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg> ruwa@curiaadvisory.co.zw</a>
+        <a class="contact-row" href="mailto:contact@curiaadvisory.co.zw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg> contact@curiaadvisory.co.zw</a>
+        <a class="contact-row" href="tel:+263781042668"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg> +263 781 042 668</a>
+        <a class="contact-row" href="https://wa.me/message/AU6PO73KM3BEM1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.06L2 22l5.06-1.37C8.42 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.93 14.07c-.23.64-1.33 1.22-1.84 1.3-.48.06-1.08.09-1.74-.11-.4-.12-.9-.3-1.56-.58-2.74-1.18-4.54-3.95-4.68-4.13C6.97 12.37 6 11.1 6 9.78c0-1.32.7-1.97.95-2.24.25-.27.54-.34.72-.34H8c.16 0 .38-.07.6.47.22.54.76 1.86.83 1.99.07.13.11.29.02.46-.09.17-.13.28-.26.43-.14.15-.28.33-.4.45-.13.12-.27.25-.12.5.16.25.68 1.12 1.46 1.81 1.33 1.08 2.37 1.43 2.78 1.58.26.1.43.09.59-.06.18-.17.73-.86.93-1.15.2-.29.39-.24.66-.14l1.84.87c.2.09.32.13.36.21.04.09.04.45-.18 1.08z"/></svg> WhatsApp</a>
+        <span class="contact-row" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg> Harare, Zimbabwe</span>
+      </div>
+      <div class="contact-soc">
+        <a class="contact-soc-a" href="https://www.linkedin.com/company/curia-advisory/about/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="7" y1="11" x2="7" y2="17"/><line x1="7" y1="7" x2="7" y2="7.5"/><path d="M11 17v-4c0-1.1.9-2 2-2s2 .9 2 2v4"/><line x1="11" y1="11" x2="11" y2="17"/></svg></a>
+        <a class="contact-soc-a" href="https://www.instagram.com/curiaadvisory?igsh=YjdnZjlvdjc5cm12" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a class="contact-soc-a" href="https://wa.me/message/AU6PO73KM3BEM1" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.06L2 22l5.06-1.37C8.42 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.93 14.07c-.23.64-1.33 1.22-1.84 1.3-.48.06-1.08.09-1.74-.11-.4-.12-.9-.3-1.56-.58-2.74-1.18-4.54-3.95-4.68-4.13C6.97 12.37 6 11.1 6 9.78c0-1.32.7-1.97.95-2.24.25-.27.54-.34.72-.34H8c.16 0 .38-.07.6.47.22.54.76 1.86.83 1.99.07.13.11.29.02.46-.09.17-.13.28-.26.43-.14.15-.28.33-.4.45-.13.12-.27.25-.12.5.16.25.68 1.12 1.46 1.81 1.33 1.08 2.37 1.43 2.78 1.58.26.1.43.09.59-.06.18-.17.73-.86.93-1.15.2-.29.39-.24.66-.14l1.84.87c.2.09.32.13.36.21.04.09.04.45-.18 1.08z"/></svg></a>
+      </div>
+    </div>
+    <div class="contact-form reveal d2">
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <div><label for="fname">Full Name</label><input type="text" id="fname" name="name" placeholder="Your full name" required></div>
+          <div><label for="forg">Organisation</label><input type="text" id="forg" name="organisation" placeholder="Your organisation"></div>
+        </div>
+        <label for="femail">Email Address</label>
+        <input type="email" id="femail" name="email" placeholder="your@email.com" required>
+        <label for="fservice">Service of Interest</label>
+        <select id="fservice" name="service">
+          <option value="">Select a service</option>
+          <option>AI Governance Advisory</option>
+          <option>CDPA Compliance Audit</option>
+          <option>AI Risk Assessment</option>
+          <option>Policy &amp; Regulatory Research</option>
+          <option>Legal Technology Research Memo</option>
+          <option>AI Vendor Contract Assessment</option>
+          <option>Training &amp; Workshops</option>
+          <option>Regulatory Horizon Scanning</option>
+          <option>General Enquiry</option>
+        </select>
+        <label for="fmsg">Message</label>
+        <textarea id="fmsg" name="message" placeholder="Briefly describe what you need..." required></textarea>
+        <button type="submit" class="form-submit">Send Enquiry</button>
+        <p class="form-note">We respond within 24 hours on business days.</p>
+        <div class="form-success" id="form-success">Thank you. Your message has been sent. We will be in touch within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <a href="#top" class="ft-logo" aria-label="Curia Advisory">
+        <img src="data:image/png;base64,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yBdPmyLYjiaz6bnvewlYWdsj2JaOXr+yn/+ceY11FeG2Q7At+F5Vax6HaBsQbIMusTZdWLX9PvN382L7ErPtOgRbYf5ubtuXthu3tSazqd27fru4trPb+D2PTo7tv3/80upijdV2PYKtVhvrZDa1/9x6UIy2Rht988cf9njrwmWl/RTBrlE3BriGumqxXNj3h0+bRg5W2RW9eU+XL02xfjfe8xKrmdloa2TfjfeKutlX4R6HmFhhVxy9fmXXrlxdG0gZa7DHPjm2Kzu7lY/NPPseK+yKn/+cJYnVzOzazm7lLkMOn0KTC4L9oGoUiBFrqW48YDR4j5HgH2uDOF8uvM2sbT2u+OVh14AV1syqV6/JbGqxY63z46/53KebCsFWKLevUjx2087BkBGsVV/U5LS6mnHxZUawdvT61do/v3f9dtJtpKrVfegXX4MPdt1W1mQ2tTb3BoQ02hol/4zaHA0+WGghWDFDn2MJFlIGH+zQVyw1gw+WCxstgw8WWghWzNCfEQgWUgh2jf3xnr2dp7+LjQvCTw0+2Ko7+X/4/aekL4E+rngJ9tuv7w/6nQeDD9ZMZy6czKbG/bBYa3+8V7nKhfZ2fso4UIFgLb+PuawaR775cpzVcaZAsB+sGwtSrLJVb4+ZzKZ27crVmIeSJd7T9bFk75o1q3+rN+/neo8VdkXd26yPTo6DPvZiuaj9XAJifY9gV+zXvJfqys7ueajx4Ojk2L4/fFr5vXObsVNiJLig6VMLfY8HVTPryvEwCqwg2DXaRGtmTuG+nZ/aD7//VBsrH1H0KYKt0OaDjDcJt/yMWD4fdjMEW6Puw+Euujj73rt+uyg/vLjU5ZO8iXU9gm0wfze3H399FuX/cfDh8ZhZa7BL0GD70nbt7oEvk9mUWFtghe0gxGo7mU3t26/vE2pLBLuBMlyzze9Zncym9s2X44KXW7shWEddVl1WU3cE60+b3QSu/B1x0QUpBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBAspBOvJZDZ1+nu0Q7CQUrw5O019DL0xmU3P98d7VX9dxDyWviJYzyaz6bmZ2f547+8x4NGtB8Voa5T0uPqCYAN5Oz+1z7cvpz6M3mGGDYRYwyBYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSCFYSPk/NRoJgtnbsYsAAAAASUVORK5CYII=" alt="Curia Advisory" style="height:38px;width:auto">
+        <div><span class="ft-logo-name">CURIA</span><span class="ft-logo-sub">ADVISORY</span></div>
+      </a>
+      <p class="ft-about">Zimbabwe's dedicated AI Governance and Legal Technology advisory firm. Where law meets intelligence.</p>
+    </div>
+    <div>
+      <div class="ft-head">Contact</div>
+      <ul class="ft-list">
+        <li><a href="mailto:ruwa@curiaadvisory.co.zw">ruwa@curiaadvisory.co.zw</a></li>
+        <li><a href="mailto:contact@curiaadvisory.co.zw">contact@curiaadvisory.co.zw</a></li>
+        <li><a href="tel:+263781042668">+263 781 042 668</a></li>
+        <li><span>Harare, Zimbabwe</span></li>
+        <li><a href="https://curiaadvisory.co.zw">curiaadvisory.co.zw</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Connect</div>
+      <div class="ft-soc">
+        <a class="ft-soc-a" href="https://www.linkedin.com/company/curia-advisory/about/?viewAsMember=true" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="7" y1="11" x2="7" y2="17"/><line x1="7" y1="7" x2="7" y2="7.5"/><path d="M11 17v-4c0-1.1.9-2 2-2s2 .9 2 2v4"/><line x1="11" y1="11" x2="11" y2="17"/></svg> LinkedIn</a>
+        <a class="ft-soc-a" href="https://www.instagram.com/curiaadvisory?igsh=YjdnZjlvdjc5cm12" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> Instagram</a>
+        <a class="ft-soc-a" href="https://wa.me/message/AU6PO73KM3BEM1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.06L2 22l5.06-1.37C8.42 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.93 14.07c-.23.64-1.33 1.22-1.84 1.3-.48.06-1.08.09-1.74-.11-.4-.12-.9-.3-1.56-.58-2.74-1.18-4.54-3.95-4.68-4.13C6.97 12.37 6 11.1 6 9.78c0-1.32.7-1.97.95-2.24.25-.27.54-.34.72-.34H8c.16 0 .38-.07.6.47.22.54.76 1.86.83 1.99.07.13.11.29.02.46-.09.17-.13.28-.26.43-.14.15-.28.33-.4.45-.13.12-.27.25-.12.5.16.25.68 1.12 1.46 1.81 1.33 1.08 2.37 1.43 2.78 1.58.26.1.43.09.59-.06.18-.17.73-.86.93-1.15.2-.29.39-.24.66-.14l1.84.87c.2.09.32.13.36.21.04.09.04.45-.18 1.08z"/></svg> WhatsApp</a>
+        <a class="ft-soc-a" href="mailto:ruwa@curiaadvisory.co.zw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg> Email</a>
+        <a class="ft-soc-a" href="tel:+263781042668"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg> +263 781 042 668</a>
+      </div>
+    </div>
+  </div>
+  <div class="ft-btm">
+    <span class="ft-copy">&copy; 2026 Curia Advisory (Private) Limited &nbsp;&middot;&nbsp; AI &nbsp;&middot;&nbsp; Governance &nbsp;&middot;&nbsp; Law</span>
+    <span class="ft-reg">Registered in Zimbabwe under the Companies and Other Business Entities Act [Chapter 24:31]</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Countdown */
+  var target = new Date('2026-12-31T23:59:59+02:00');
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var d=target-new Date();
+    if(d<0)d=0;
+    document.getElementById('cd-d').textContent=Math.floor(d/86400000);
+    document.getElementById('cd-h').textContent=pad(Math.floor(d%86400000/3600000));
+    document.getElementById('cd-m').textContent=pad(Math.floor(d%3600000/60000));
+    document.getElementById('cd-s').textContent=pad(Math.floor(d%60000/1000));
+  }
+  tick();setInterval(tick,1000);
+
+  /* Scroll reveal */
+  var obs=new IntersectionObserver(function(e){
+    e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('in')});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+
+  /* Scroll to top */
+  var btn=document.getElementById('totop');
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('show',window.scrollY>400);
+  },{passive:true});
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* Service tabs */
+  window.switchTab=function(id,el){
+    document.querySelectorAll('.svc-panel').forEach(function(p){p.classList.remove('active')});
+    document.querySelectorAll('.svc-tab').forEach(function(t){t.classList.remove('active')});
+    document.getElementById('panel-'+id).classList.add('active');
+    el.classList.add('active');
+  };
+
+  /* Contact form */
+  document.getElementById('contact-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('fname').value.trim();
+    var email=document.getElementById('femail').value.trim();
+    var msg=document.getElementById('fmsg').value.trim();
+    if(!name||!email||!msg){alert('Please complete all required fields.');return;}
+    var mailto='mailto:ruwa@curiaadvisory.co.zw?subject=Enquiry from '+encodeURIComponent(name)+'&body='+encodeURIComponent('Name: '+name+'
+Email: '+email+'
+Message: '+msg);
+    window.location.href=mailto;
+    document.getElementById('form-success').style.display='block';
+    this.reset();
+  });
+})();
+</script>
+</body>
+</html>
