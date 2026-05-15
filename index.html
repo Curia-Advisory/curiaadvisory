@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
   box-shadow:0 2px 20px rgba(0,0,0,.2);}
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .nav-mark{height:42px;width:auto}
-.nav-name{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--sage);letter-spacing:1px;line-height:1}
+.nav-name{font-family:var(--sans);font-size:18px;font-weight:700;color:var(--sage);letter-spacing:1px;line-height:1}
 .nav-sub{font-family:var(--sans);font-size:7.5px;color:rgba(168,196,176,.75);letter-spacing:3.5px;display:block}
 .nav-right{display:flex;align-items:center;gap:4px}
 .nav-link{font-family:var(--sans);font-size:12.5px;color:rgba(245,249,247,.7);text-decoration:none;
@@ -61,9 +62,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
   letter-spacing:4.5px;text-transform:uppercase;margin-bottom:22px;
   display:flex;align-items:center;gap:12px}
 .hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--olive);display:inline-block}
-.hero-headline{font-family:var(--serif);font-size:clamp(34px,6.5vw,72px);
+.hero-headline{font-family:var(--sans);font-size:clamp(32px,6vw,68px);letter-spacing:-.01em;
   font-weight:900;color:var(--char);line-height:1.1;max-width:820px;margin-bottom:24px}
-.hero-headline em{font-style:italic;color:var(--forest)}
+.hero-headline em{font-style:normal;color:var(--forest);font-weight:900}
 .hero-body{font-family:var(--sans);font-size:16px;color:var(--stone);line-height:1.8;
   max-width:580px;margin-bottom:36px}
 .hero-body strong{color:var(--char);font-weight:600}
@@ -77,7 +78,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .hero-stripe{margin-top:56px;display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--border)}
 .hero-stat{padding:22px 36px;border-right:1px solid var(--border);flex:1;min-width:150px}
 .hero-stat:last-child{border-right:none}
-.hero-stat-val{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--forest);line-height:1}
+.hero-stat-val{font-family:var(--sans);font-size:30px;font-weight:700;color:var(--forest);line-height:1}
 .hero-stat-lbl{font-family:var(--sans);font-size:11px;color:var(--stone);margin-top:5px}
 
 /* ── WHY SECTION (charcoal) ── */
@@ -87,7 +88,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
   letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;
   display:flex;align-items:center;gap:10px}
 .why-label::before{content:'';width:22px;height:1px;background:var(--olive);display:inline-block}
-.why-title{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:700;
+.why-title{font-family:var(--sans);font-size:clamp(26px,4vw,40px);font-weight:700;
   color:var(--sage);line-height:1.2;margin-bottom:24px}
 .why-body{font-family:var(--sans);font-size:15px;color:rgba(245,249,247,.65);
   line-height:1.8;margin-bottom:20px}
@@ -104,14 +105,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .why-point-desc{font-family:var(--sans);font-size:12.5px;color:rgba(245,249,247,.5);line-height:1.6}
 .why-quote{background:rgba(27,67,50,.3);border:1px solid rgba(27,67,50,.5);
   border-left:3px solid var(--mid);padding:32px;}
-.why-quote-text{font-family:var(--serif);font-size:clamp(17px,2.5vw,21px);
-  font-style:italic;color:rgba(245,249,247,.85);line-height:1.7;margin-bottom:20px}
+.why-quote-text{font-family:var(--sans);font-size:clamp(17px,2.5vw,21px);
+  font-style:normal;color:rgba(245,249,247,.85);line-height:1.7;margin-bottom:20px}
 .why-quote-author{font-family:var(--sans);font-size:11px;font-weight:600;
   color:rgba(168,196,176,.7);letter-spacing:2px;text-transform:uppercase}
 .why-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);
   margin-top:24px;border:1px solid rgba(255,255,255,.06)}
 .why-stat{background:var(--char);padding:24px 20px;text-align:center}
-.why-stat-val{font-family:var(--serif);font-size:36px;font-weight:700;
+.why-stat-val{font-family:var(--sans);font-size:36px;font-weight:700;
   color:rgba(168,196,176,.9);line-height:1}
 .why-stat-lbl{font-family:var(--sans);font-size:10px;color:rgba(136,135,128,.7);
   letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}
@@ -121,7 +122,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .countdown{background:var(--forest);padding:80px max(1.5rem,8vw);text-align:center}
 .cd-eyebrow{font-family:var(--sans);font-size:10px;font-weight:600;
   color:rgba(168,196,176,.6);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}
-.cd-title{font-family:var(--serif);font-size:clamp(22px,3.5vw,34px);
+.cd-title{font-family:var(--sans);font-size:clamp(22px,3.5vw,34px);
   font-weight:700;color:var(--sage);margin-bottom:8px}
 .cd-sub{font-family:var(--sans);font-size:14px;color:rgba(245,249,247,.5);
   margin-bottom:52px;max-width:480px;margin-left:auto;margin-right:auto}
@@ -129,7 +130,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .cd-unit{display:flex;flex-direction:column;align-items:center;padding:0 28px;
   border-right:1px solid rgba(255,255,255,.08)}
 .cd-unit:last-child{border-right:none}
-.cd-num{font-family:var(--serif);font-size:clamp(56px,10vw,110px);font-weight:700;
+.cd-num{font-family:var(--sans);font-size:clamp(56px,10vw,110px);font-weight:700;
   color:var(--sage);line-height:1;min-width:80px;text-align:center}
 .cd-lbl{font-family:var(--sans);font-size:10px;font-weight:600;color:rgba(168,196,176,.6);
   letter-spacing:3px;text-transform:uppercase;margin-top:8px}
@@ -144,7 +145,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
   letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;
   display:flex;align-items:center;gap:10px}
 .checker-intro-label::before{content:'';width:22px;height:1px;background:var(--olive);display:inline-block}
-.checker-intro-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,36px);
+.checker-intro-title{font-family:var(--sans);font-size:clamp(24px,3.5vw,36px);
   font-weight:700;color:var(--sage);line-height:1.2;margin-bottom:20px}
 .checker-intro-body{font-family:var(--sans);font-size:14.5px;color:rgba(245,249,247,.6);
   line-height:1.8;margin-bottom:28px}
@@ -158,14 +159,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .checker-tool-head{font-family:var(--sans);font-size:10px;font-weight:700;
   color:rgba(168,196,176,.6);letter-spacing:3px;text-transform:uppercase;
   margin-bottom:6px}
-.checker-tool-title{font-family:var(--serif);font-size:20px;font-weight:700;
+.checker-tool-title{font-family:var(--sans);font-size:20px;font-weight:700;
   color:var(--sage);margin-bottom:20px;line-height:1.3}
 .checker-progress{height:4px;background:rgba(255,255,255,.08);margin-bottom:28px}
 .checker-progress-bar{height:4px;background:linear-gradient(90deg,var(--forest),var(--mid));
   transition:width .4s ease;width:0}
 .checker-q{display:none}
 .checker-q.active{display:block}
-.checker-q-text{font-family:var(--serif);font-size:16px;font-style:italic;
+.checker-q-text{font-family:var(--sans);font-size:15px;font-style:normal;font-weight:500;
   color:rgba(245,249,247,.85);line-height:1.55;margin-bottom:22px}
 .checker-q-num{font-family:var(--sans);font-size:9.5px;color:rgba(168,196,176,.45);
   letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
@@ -177,7 +178,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .checker-btn.no{border-color:rgba(92,90,53,.4);background:rgba(92,90,53,.15);color:rgba(245,249,247,.6)}
 .checker-btn.no:hover{background:rgba(92,90,53,.35);color:var(--sage)}
 .checker-result{display:none;text-align:center;padding-top:10px}
-.checker-score{font-family:var(--serif);font-size:52px;font-weight:700;color:var(--sage);line-height:1}
+.checker-score{font-family:var(--sans);font-size:52px;font-weight:700;color:var(--sage);line-height:1}
 .checker-score-lbl{font-family:var(--sans);font-size:10px;color:rgba(168,196,176,.55);
   letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
 .checker-result-text{font-family:var(--sans);font-size:13.5px;color:rgba(245,249,247,.65);
@@ -203,7 +204,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .section-label::before{content:'';width:22px;height:1px;background:var(--olive);display:inline-block}
 .section-label.lt{color:rgba(168,196,176,.65)}
 .section-label.lt::before{background:rgba(168,196,176,.4)}
-.section-title{font-family:var(--serif);font-size:clamp(24px,4vw,38px);
+.section-title{font-family:var(--sans);font-size:clamp(24px,4vw,38px);
   font-weight:700;color:var(--char);line-height:1.2;max-width:620px}
 .section-title.lt{color:var(--sage)}
 .section-body{font-family:var(--sans);font-size:15px;color:var(--stone);
@@ -228,16 +229,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
   background:var(--forest);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
 .svc-card:hover{background:var(--sage);transform:translateY(-3px)}
 .svc-card:hover::after{transform:scaleX(1)}
-.svc-q{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--forest);line-height:1.55;flex:1}
+.svc-q{font-family:var(--sans);font-size:15px;font-style:normal;font-weight:600;color:var(--forest);line-height:1.55;flex:1}
 .svc-name{font-family:var(--sans);font-size:9.5px;font-weight:700;color:var(--stone);
   letter-spacing:2.5px;text-transform:uppercase;padding-top:14px;border-top:1px solid var(--border)}
 .svc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;
   background:var(--border);border:1px solid var(--border)}
 .svc-item{background:var(--white);padding:32px 28px;transition:background .2s}
 .svc-item:hover{background:var(--sage)}
-.svc-num{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--border);
+.svc-num{font-family:var(--sans);font-size:36px;font-weight:700;color:var(--border);
   line-height:1;margin-bottom:12px}
-.svc-item-name{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--char);margin-bottom:10px}
+.svc-item-name{font-family:var(--sans);font-size:18px;font-weight:700;color:var(--char);margin-bottom:10px}
 .svc-item-desc{font-family:var(--sans);font-size:13.5px;color:var(--stone);line-height:1.7;margin-bottom:10px}
 .svc-item-meta{font-family:var(--sans);font-size:10px;font-weight:600;color:var(--olive);
   letter-spacing:1.5px;text-transform:uppercase}
@@ -262,9 +263,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
 .pub-date{font-family:var(--sans);font-size:10px;color:rgba(168,196,176,.6);letter-spacing:2px;text-transform:uppercase}
 .pub-tag{font-family:var(--sans);font-size:9px;font-weight:600;color:var(--olive);
   letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border:1px solid var(--olive)}
-.pub-name{font-family:var(--serif);font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--sage);line-height:1.3}
+.pub-name{font-family:var(--sans);font-size:clamp(17px,2vw,21px);font-weight:700;color:var(--sage);line-height:1.3}
 .pub-body{font-family:var(--sans);font-size:13px;color:rgba(245,249,247,.5);line-height:1.7}
-.pub-quote{font-family:var(--serif);font-size:14px;font-style:italic;
+.pub-quote{font-family:var(--sans);font-size:13.5px;font-style:normal;
   color:rgba(168,196,176,.82);line-height:1.7;padding-left:16px;border-left:2px solid var(--olive);flex:1}
 .pub-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:11px;
   font-weight:600;color:rgba(168,196,176,.75);text-decoration:none;
@@ -284,12 +285,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--forest);
   letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;
   display:flex;align-items:center;gap:10px}
 .about-label::before{content:'';width:22px;height:1px;background:var(--olive);display:inline-block}
-.about-title{font-family:var(--serif);font-size:clamp(22px,3.5vw,34px);
+.about-title{font-family:var(--sans);font-size:clamp(22px,3.5vw,34px);
   font-weight:700;color:var(--char);line-height:1.2;margin-bottom:20px}
 .about-body{font-family:var(--sans);font-size:14.5px;color:var(--stone);
   line-height:1.8;margin-bottom:16px}
 .about-body strong{color:var(--char);font-weight:600}
-.about-stmt{font-family:var(--serif);font-size:clamp(17px,2.5vw,22px);font-style:italic;
+.about-stmt{font-family:var(--sans);font-size:clamp(16px,2.3vw,20px);font-style:normal;font-weight:400;
   color:var(--char);line-height:1.7;padding:24px 28px;
   background:var(--white);border-left:3px solid var(--forest);margin:20px 0}
 .about-rule{width:36px;height:2px;background:var(--forest);margin:20px 0 14px}
@@ -339,7 +340,7 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
   padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
 .ft-logo{display:flex;align-items:center;gap:12px;margin-bottom:14px;text-decoration:none}
 .ft-logo img{height:38px;width:auto}
-.ft-logo-name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--sage);letter-spacing:1.5px}
+.ft-logo-name{font-family:var(--sans);font-size:17px;font-weight:700;color:var(--sage);letter-spacing:1.5px}
 .ft-logo-sub{font-family:var(--sans);font-size:7.5px;color:rgba(168,196,176,.55);letter-spacing:4px}
 .ft-about{font-family:var(--sans);font-size:12.5px;color:rgba(245,249,247,.45);line-height:1.7;max-width:250px}
 .ft-head{font-family:var(--sans);font-size:9.5px;font-weight:700;color:rgba(168,196,176,.6);
@@ -395,7 +396,7 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
   <p class="hero-eyebrow reveal">AI Governance &nbsp;·&nbsp; Legal Technology &nbsp;·&nbsp; Zimbabwe</p>
   <h1 class="hero-headline reveal d1">Zimbabwe's organisations are<br>already regulated.<br><em>Most just don't know it.</em></h1>
   <p class="hero-body reveal d2">
-    The <strong>Cyber and Data Protection Act 2021</strong> has governed how organisations process personal data for over four years. It applies to every organisation in Zimbabwe that collects, stores, uses, or shares personal information — including through artificial intelligence tools. Most organisations have never formally mapped their obligations under the Act. <strong>Curia Advisory exists to change that.</strong>
+    The <strong>Cyber and Data Protection Act 2021</strong> has governed how organisations process personal data for over four years. It applies to every organisation in Zimbabwe that collects, stores, uses, or shares personal information, including through artificial intelligence tools. Most organisations have never formally assessed their obligations under the Act. <strong>Curia Advisory exists to change that.</strong>
   </p>
   <a href="#services" class="hero-cta reveal d3">Find out where you stand <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg></a>
   <div class="hero-stripe">
@@ -411,12 +412,11 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
     <div>
       <div class="why-label reveal">Why This Matters</div>
       <h2 class="why-title reveal d1">The gap between regulation and awareness is the problem we are solving.</h2>
-      <p class="why-body reveal d2">Organisations across Zimbabwe — law firms, financial institutions, NGOs, government bodies, and corporates — are using artificial intelligence tools in their daily operations. Most are processing personal data through these tools without a governance framework, without a documented lawful basis, and without client or beneficiary awareness.</p>
-      <p class="why-body reveal d2">This is not a future risk. <strong>The obligations exist now.</strong> The Cyber and Data Protection Act 2021 and the Zimbabwe National AI Strategy 2026-2030 together create a regulatory landscape that requires organisations to act before enforcement makes it urgent.</p>
+      <p class="why-body reveal d2">Organisations across Zimbabwe are using AI tools daily without governance frameworks or a documented legal basis. The Cyber and Data Protection Act 2021 already applies to this processing. <strong>The obligations exist now</strong>, and the National AI Strategy 2026-2030 is accelerating regulatory expectations. The time to act is before enforcement makes it urgent.</p>
       <div class="why-points reveal d3">
         <div class="why-point">
           <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg></div>
-          <div><div class="why-point-head">The CDPA applies regardless of technology</div><div class="why-point-desc">Any system that processes personal data — including AI tools — falls within the Act's scope. There is no AI exemption.</div></div>
+          <div><div class="why-point-head">The CDPA applies regardless of technology</div><div class="why-point-desc">Any system that processes personal data, including AI tools, falls within the Act's scope. There is no AI exemption.</div></div>
         </div>
         <div class="why-point">
           <div class="why-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg></div>
@@ -497,7 +497,7 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
         </div>
         <div class="checker-q" data-i="2">
           <div class="checker-q-num">Question 3 of 8</div>
-          <p class="checker-q-text">"Does your organisation collect only the minimum personal data necessary for its stated purpose — no more?"</p>
+          <p class="checker-q-text">"Does your organisation collect only the minimum personal data necessary for its stated purpose?"</p>
           <div class="checker-btns"><button class="checker-btn yes" onclick="answer(true)">Yes</button><button class="checker-btn no" onclick="answer(false)">No</button></div>
         </div>
         <div class="checker-q" data-i="3">
@@ -507,7 +507,7 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
         </div>
         <div class="checker-q" data-i="4">
           <div class="checker-q-num">Question 5 of 8</div>
-          <p class="checker-q-text">"Does your organisation have a documented data retention schedule — specifying how long personal data is kept before deletion?"</p>
+          <p class="checker-q-text">"Does your organisation have a documented data retention schedule, specifying how long personal data is kept before deletion?"</p>
           <div class="checker-btns"><button class="checker-btn yes" onclick="answer(true)">Yes</button><button class="checker-btn no" onclick="answer(false)">No</button></div>
         </div>
         <div class="checker-q" data-i="5">
@@ -564,11 +564,11 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
 
       <div class="svc-item"><div class="svc-num">02</div><div><div class="svc-item-name">CDPA Compliance Audit</div><p class="svc-item-desc">A formal, written assessment of your organisation's data practices against all eight principles of the Cyber and Data Protection Act 2021 (Chapter 12:07). We assess what you are currently doing, identify where your practices fall short, quantify the risk level of each gap, and provide a prioritised action plan. Every organisation processing personal data in Zimbabwe is legally required to comply with these principles. Most have never formally checked whether they do.</p><div class="svc-includes"><div class="svc-includes-head">Includes</div><div class="svc-include-item">Full eight-principle gap analysis</div><div class="svc-include-item">Written audit report of 15 to 25 pages</div><div class="svc-include-item">Risk priority matrix rated High, Medium, and Low</div><div class="svc-include-item">Recommended actions ranked by urgency</div><div class="svc-include-item">Draft Data Protection Policy</div></div><div class="svc-item-meta">Timeline: 2 to 3 weeks &nbsp;·&nbsp; All sectors</div></div></div>
 
-      <div class="svc-item"><div class="svc-num">03</div><div><div class="svc-item-name">AI Risk Assessment</div><p class="svc-item-desc">A focused assessment of the specific legal and governance risks created by your organisation's use of artificial intelligence. Unlike a general CDPA audit, an AI risk assessment examines the specific ways AI tools create data protection exposure — from biometric KYC in financial services, to AI-assisted legal research in law firms, to beneficiary data processing in NGOs. We produce a written risk report and a sector-specific AI Use Policy.</p><div class="svc-includes"><div class="svc-includes-head">Sectors covered</div><div class="svc-include-item">Law firms: confidentiality, hallucinated citations, engagement letter gaps</div><div class="svc-include-item">Financial institutions: biometric KYC, automated credit decisions, mobile money data</div><div class="svc-include-item">NGOs: beneficiary data, donor reporting, field data collection</div><div class="svc-include-item">Corporates: operational AI, HR decision tools, vendor systems</div><div class="svc-include-item">Government bodies: citizen data, administrative AI, CDPA and AI Strategy compliance</div></div><div class="svc-item-meta">Timeline: 1 to 2 weeks &nbsp;·&nbsp; Sector-specific pricing</div></div></div>
+      <div class="svc-item"><div class="svc-num">03</div><div><div class="svc-item-name">AI Risk Assessment</div><p class="svc-item-desc">A focused assessment of the specific legal and governance risks created by your organisation's use of artificial intelligence. Unlike a general CDPA audit, an AI risk assessment examines the specific ways AI tools create data protection exposure: biometric KYC in financial services, AI-assisted legal research in law firms, and beneficiary data processing in NGOs. We produce a written risk report and a sector-specific AI Use Policy.</p><div class="svc-includes"><div class="svc-includes-head">Sectors covered</div><div class="svc-include-item">Law firms: confidentiality, hallucinated citations, engagement letter gaps</div><div class="svc-include-item">Financial institutions: biometric KYC, automated credit decisions, mobile money data</div><div class="svc-include-item">NGOs: beneficiary data, donor reporting, field data collection</div><div class="svc-include-item">Corporates: operational AI, HR decision tools, vendor systems</div><div class="svc-include-item">Government bodies: citizen data, administrative AI, CDPA and AI Strategy compliance</div></div><div class="svc-item-meta">Timeline: 1 to 2 weeks &nbsp;·&nbsp; Sector-specific pricing</div></div></div>
 
-      <div class="svc-item"><div class="svc-num">04</div><div><div class="svc-item-name">Policy Brief &amp; Legal Technology Research Memo</div><p class="svc-item-desc">Accurate, well-researched written analysis of specific regulatory and governance questions. A policy brief is a 2,000 to 4,000 word document written for decision-makers, examining a regulatory question and making specific recommendations. A research memo is a shorter, more targeted answer to a precise legal or regulatory question. Both are verified against primary sources — no AI-generated citations, no generic summaries.</p><div class="svc-includes"><div class="svc-includes-head">Typical subjects</div><div class="svc-include-item">How the CDPA applies to a specific business operation or AI use case</div><div class="svc-include-item">Analysis of new regulatory guidance from POTRAZ or the Ministry of ICT</div><div class="svc-include-item">Comparative analysis of Zimbabwe, regional, and international frameworks</div><div class="svc-include-item">Legal basis assessments for specific data processing activities</div></div><div class="svc-item-meta">Policy brief: 1 to 2 weeks &nbsp;·&nbsp; Research memo: 3 to 5 days</div></div></div>
+      <div class="svc-item"><div class="svc-num">04</div><div><div class="svc-item-name">Policy Brief &amp; Legal Technology Research Memo</div><p class="svc-item-desc">Accurate, well-researched written analysis of specific regulatory and governance questions. A policy brief is a 2,000 to 4,000 word document written for decision-makers, examining a regulatory question and making specific recommendations. A research memo is a shorter, more targeted answer to a precise legal or regulatory question. Both are verified against primary sources. No AI-generated citations, no generic summaries.</p><div class="svc-includes"><div class="svc-includes-head">Typical subjects</div><div class="svc-include-item">How the CDPA applies to a specific business operation or AI use case</div><div class="svc-include-item">Analysis of new regulatory guidance from POTRAZ or the Ministry of ICT</div><div class="svc-include-item">Comparative analysis of Zimbabwe, regional, and international frameworks</div><div class="svc-include-item">Legal basis assessments for specific data processing activities</div></div><div class="svc-item-meta">Policy brief: 1 to 2 weeks &nbsp;·&nbsp; Research memo: 3 to 5 days</div></div></div>
 
-      <div class="svc-item"><div class="svc-num">05</div><div><div class="svc-item-name">AI Vendor Contract Assessment</div><p class="svc-item-desc">Before signing a contract with an AI tool provider, platform, or data processing vendor, Curia Advisory reviews the agreement for data protection risks and CDPA compliance gaps. Most vendor contracts for AI tools are drafted for the vendor's benefit. We identify the gaps, recommend amendments, and flag clauses that create compliance exposure before you are contractually bound.</p><div class="svc-includes"><div class="svc-includes-head">We review for</div><div class="svc-include-item">Data ownership — who owns what you input into the AI tool</div><div class="svc-include-item">Model training clauses — whether your data is used to train the vendor's models</div><div class="svc-include-item">Data Processing Agreement — whether one exists and whether it covers CDPA obligations</div><div class="svc-include-item">Security guarantees and breach notification obligations</div><div class="svc-include-item">Cross-border transfer compliance under CDPA Section 22</div></div><div class="svc-item-meta">Timeline: 5 to 7 working days</div></div></div>
+      <div class="svc-item"><div class="svc-num">05</div><div><div class="svc-item-name">AI Vendor Contract Assessment</div><p class="svc-item-desc">Before signing a contract with an AI tool provider, platform, or data processing vendor, Curia Advisory reviews the agreement for data protection risks and CDPA compliance gaps. Most vendor contracts for AI tools are drafted for the vendor's benefit. We identify the gaps, recommend amendments, and flag clauses that create compliance exposure before you are contractually bound.</p><div class="svc-includes"><div class="svc-includes-head">We review for</div><div class="svc-include-item">Data ownership: who owns what you input into the AI tool</div><div class="svc-include-item">Model training clauses: whether your data is used to train the vendor's models</div><div class="svc-include-item">Data Processing Agreement: whether one exists and whether it covers CDPA obligations</div><div class="svc-include-item">Security guarantees and breach notification obligations</div><div class="svc-include-item">Cross-border transfer compliance under CDPA Section 22</div></div><div class="svc-item-meta">Timeline: 5 to 7 working days</div></div></div>
 
       <div class="svc-item"><div class="svc-num">06</div><div><div class="svc-item-name">Training Workshops &amp; Regulatory Horizon Scanning</div><p class="svc-item-desc">Half-day and full-day training sessions on CDPA compliance, AI governance, and legal technology for teams across all sectors. Delivered in Harare, tailored to your organisation's sector, and including materials your team can use after the session. Regulatory Horizon Scanning is a monthly retainer service: we monitor developments in AI regulation and data protection across Zimbabwe and the region and deliver a concise briefing to your team on the last working day of each month.</p><div class="svc-includes"><div class="svc-includes-head">Training includes</div><div class="svc-include-item">CDPA principles and what they require of your organisation</div><div class="svc-include-item">Permitted and prohibited AI tool use in your sector</div><div class="svc-include-item">Data subject rights and how to handle requests</div><div class="svc-include-item">Participant handbook, CDPA reference card, and 90-day action plan</div></div><div class="svc-item-meta">Half day: 2 to 3 week lead time &nbsp;·&nbsp; Horizon Scanning: monthly retainer</div></div></div>
     </div>
@@ -593,7 +593,7 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
     <article class="pub-card reveal d2">
       <div class="pub-meta"><span class="pub-date">12 May 2026</span><span class="pub-tag">AI Governance</span></div>
       <h3 class="pub-name">Zimbabwe National AI Strategy 2026-2030: Implementation, Governance, and the Law</h3>
-      <p class="pub-body">An in-depth analysis of Zimbabwe's National AI Strategy, its six pillars, three implementation phases, and the governance architecture — the NAIC, AISIO, and NDRC — being operationalised to oversee AI development across the country.</p>
+      <p class="pub-body">An in-depth analysis of Zimbabwe's National AI Strategy, its six pillars, three implementation phases, and the governance architecture (the NAIC, AISIO, and NDRC) being operationalised to oversee AI development across the country.</p>
       <blockquote class="pub-quote">The governance bodies exist on paper. The question is whether they are operationalised before the window for proactive compliance closes on organisations across Zimbabwe.</blockquote>
       <a class="pub-link" href="https://www.linkedin.com/in/ruwalauryn" target="_blank" rel="noopener">Read on LinkedIn</a>
     </article>
@@ -612,12 +612,9 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
       <div class="about-visual-tag">Curia Advisory<br>Harare, Zimbabwe<br>Est. April 2026</div>
     </div>
     <div>
-      <p class="about-body reveal">Curia Advisory (Private) Limited is Zimbabwe's first dedicated AI Governance and Legal Technology advisory firm, registered under the Companies and Other Business Entities Act [Chapter 24:31]. We advise organisations across the private sector, civil society, and government on their obligations under Zimbabwe's data protection and AI regulatory framework.</p>
-      <p class="about-body reveal d1">Our work sits at the intersection of law and technology. We do not provide general legal advice or legal representation. We provide specialist advisory services: compliance frameworks, risk assessments, policy research, regulatory analysis, and training. Every service we deliver is grounded in Zimbabwe's actual legal framework — not generic international templates adapted without local knowledge.</p>
-      <p class="about-body reveal d1">We work with <strong>law firms, financial institutions, fintechs, NGOs, government bodies, and corporates</strong> across Zimbabwe and the region. Our focus is practical: we produce deliverables that organisations can implement, not reports that sit on shelves.</p>
-      <div class="about-stmt reveal d2">Curia Advisory started from a simple observation I kept coming back to. Many organisations are already covered by the Cyber and Data Protection Act, but do not always recognise it in practice. The gap between regulation and awareness is exactly what this firm is focused on closing.</div>
+      <p class="about-body reveal">Curia Advisory (Private) Limited is Zimbabwe's dedicated AI Governance and Legal Technology advisory firm, registered under the Companies and Other Business Entities Act [Chapter 24:31]. We provide specialist advisory services to law firms, financial institutions, NGOs, and government bodies: compliance frameworks, risk assessments, regulatory research, and training. Everything we deliver is grounded in Zimbabwe's actual legal framework and practical enough to implement.</p>
       <div class="about-rule reveal d2"></div>
-      <p class="about-who reveal d2">Ruwa Lauryn — Founder</p>
+      <p class="about-who reveal d2">Ruwa Lauryn, Founder</p>
       <p class="about-role reveal d2">LLB International and European Law, specialisation Legal Technology and AI, The Hague University of Applied Sciences &nbsp;·&nbsp; Full Member, Law Society of African AI Professionals &nbsp;·&nbsp; Published analyst on Zimbabwe's AI regulatory landscape</p>
     </div>
   </div>
@@ -631,7 +628,7 @@ footer{background:var(--forest);padding:60px max(1.5rem,5vw) 32px;border-top:3px
   </div>
   <div class="contact-grid">
     <div class="reveal">
-      <p class="contact-body">We offer a no-obligation 30-minute discovery call to all new enquiries. Tell us about your organisation, your sector, and what you need — we will tell you honestly whether and how we can help.</p>
+      <p class="contact-body">We offer a no-obligation 30-minute discovery call to all new enquiries. Tell us about your organisation, your sector, and what you need. We will tell you honestly whether and how we can help.</p>
       <a class="contact-row" href="mailto:ruwa@curiaadvisory.co.zw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg> ruwa@curiaadvisory.co.zw</a>
       <a class="contact-row" href="mailto:contact@curiaadvisory.co.zw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg> contact@curiaadvisory.co.zw</a>
       <a class="contact-row" href="tel:+263781042668"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg> +263 781 042 668</a>
